@@ -22,7 +22,7 @@ Starting the actual development tomorrow. Goal is to stay consistent and ship a 
 ---
 
 ## Day 1 – December 21, 2025
-**Status:** Not started yet
+**Status:** In progress
 
 ### Planned:
 - Research portfolio design inspiration
@@ -30,7 +30,14 @@ Starting the actual development tomorrow. Goal is to stay consistent and ship a 
 - Set up basic HTML structure
 
 ### Completed:
-- 
+- Chosen color theme:
+    Background: #121212
+    Surface: #1E1E1E
+    Primary (Sandstone): #D6C6A8
+    Accent (Sage): #A3A380
+    Text (Primary): #FAFAFA
+    Text (Muted): #B0B0B0
+
 
 ### Challenges:
 - 
