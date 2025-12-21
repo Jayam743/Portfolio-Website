@@ -3,7 +3,7 @@
 This document tracks my daily progress while building my personal portfolio website.
 
 **Start Date:** December 21, 2025  
-**Target Completion Date:** January 20, 2026  
+**Target Completion Date:** December 29, 2025  
 
 ---
 
@@ -28,7 +28,7 @@ Starting the actual development tomorrow. Goal is to stay consistent and ship a 
 - Research portfolio design inspiration
 - Decide overall layout and sections
 - Set up basic HTML structure
-
+- Set up the Font
 ### Completed:
 - Chosen color theme:
     Background: #121212
