@@ -6,8 +6,11 @@
   --primary: #D6C6A8; /* sandstone */
   --accent: #A3A380;  /* sage */
 
-  --text: #FAFAFA;
+  --text:#D6C6A8 ;
   --muted: #B0B0B0;
+
+  --primary-rgb: 214, 198, 168;
+  --accent-rgb: 163, 163, 128;
 
   /* Layout + UI */
   --container: 980px;

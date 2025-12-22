@@ -9,18 +9,23 @@
   <!-- Base Styles -->
   <link rel="stylesheet" href="styles/variables.css">
   <link rel="stylesheet" href="styles/global.css">
+
+  <!-- Component Styles -->
+  <link rel="stylesheet" href="components/FeaturedProjects.css">
+  <link rel="stylesheet" href="components/ContactForm.css">
+
 </head>
+
 <body>
 
   <!-- HEADER / NAV -->
   <header>
     <nav class="container">
-      <h1>YourName</h1>
+      <h1>Jayam Patel</h1>
       <ul>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">Contact Me</a></li>
       </ul>
     </nav>
   </header>
@@ -31,33 +36,8 @@
     <!-- HERO -->
     <section id="hero">
       <div class="container">
-        <h2>Computer Science Student @ UML</h2>
-        <p>
-          Building software with intention, structure, and understanding.
-        </p>
-      </div>
-    </section>
-
-    <!-- FEATURED PROJECTS -->
-    <section id="projects">
-      <div class="container">
-        <h2>Featured Projects</h2>
-        <!-- 3D featured projects component will go here -->
-      </div>
-    </section>
-
-    <!-- ALL PROJECTS -->
-    <section id="all-projects">
-      <div class="container">
-        <h2>All Projects</h2>
-        <!-- Project list/grid will go here -->
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills">
-      <div class="container">
-        <h2>Skills</h2>
+        <h2>Jayam Patel</h2>
+        <p class="muted">I am </p>
       </div>
     </section>
 
@@ -65,22 +45,105 @@
     <section id="about">
       <div class="container">
         <h2>About Me</h2>
+        <p class="muted">
+          I’m a CS sophomore at UML building projects in public, learning Git deeply, and doing a 30 projects in 30 days challenge.
+        </p>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact">
+    <!-- FEATURED PROJECTS (3D RING) -->
+    <section id="projects">
       <div class="container">
-        <h2>Contact</h2>
+        <h2>Featured Projects</h2>
+        <p class="muted">Top recent builds — click a card to open the repo (demo optional).</p>
+
+        <div class="featured-wrap">
+          <div class="wrapper">
+            <div id="featuredRing" class="inner" style="--quantity: 6;">
+                <div class="card" style="--index:0;"><a href="#"><div class="img"></div><div class="title">Project 01</div><div class="meta">Repo link soon</div></a></div>
+                <div class="card" style="--index:1;"><a href="#"><div class="img"></div><div class="title">Project 02</div><div class="meta">Repo link soon</div></a></div>
+                <div class="card" style="--index:2;"><a href="#"><div class="img"></div><div class="title">Project 03</div><div class="meta">Repo link soon</div></a></div>
+                <div class="card" style="--index:3;"><a href="#"><div class="img"></div><div class="title">Project 04</div><div class="meta">Repo link soon</div></a></div>
+                <div class="card" style="--index:4;"><a href="#"><div class="img"></div><div class="title">Project 05</div><div class="meta">Repo link soon</div></a></div>
+                <div class="card" style="--index:5;"><a href="#"><div class="img"></div><div class="title">Project 06</div><div class="meta">Repo link soon</div></a></div>
+                
+            </div>
+          </div>
+        </div>
       </div>
     </section>
+
+    <!-- ALL PROJECTS GRID -->
+    <section id="all-projects">
+      <div class="container">
+        <h2>All Projects</h2>
+        <div id="projectsGrid" class="projects-grid">
+          <!-- JS injects all project cards here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container">
+        <h2>Me and MyTech Stack</h2>
+        <p class="muted">HTML • CSS • JavaScript • Git • (add more as you go)</p>
+      </div>
+    </section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-card">
+      <h2>Get In Touch</h2>
+      <p class="contact-subtitle">Have a project in mind? Let's build something together.</p>
+
+      <div class="success-message" id="successMessage">
+        ✓ Thanks! I'll get back to you soon.
+      </div>
+
+      <form id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="John" required>
+          </div>
+
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone (Optional)</label>
+            <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+          </div>
+        </div>
+
+        <div class="form-group full-width">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
 
   </main>
 
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>© 2025 Your Name</p>
+      <p class="muted">© 2025 Jayam Patel</p>
     </div>
   </footer>
 
