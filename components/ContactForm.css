@@ -5,7 +5,7 @@
   border-radius: var(--radius-lg);
   padding: var(--space-5);
   box-shadow: var(--shadow);
-  max-width: 800px;
+  max-width: min(var(--container), calc(100% - 32px)); 
   margin: 0 auto;
 }
 
