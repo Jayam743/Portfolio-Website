@@ -50,11 +50,22 @@ Starting the actual development tomorrow. Goal is to stay consistent and ship a 
 ## Day 2 – December 22, 2025
 
 ### Planned:
-- Finish the website
+- Finish the Contact Me form, Skills
 - Add my info
 
 ### Completed
+- Contact Me Form
+- Skills
+- Got all the layout
 
+Overall productive day!
 
+## Day 3 - December 23, 2025
 
+### Planned: 
+- Finish the About Me, 
+- Confirm the formating
+
+### Completed:
+-
 <!-- Continue adding one section per day -->
