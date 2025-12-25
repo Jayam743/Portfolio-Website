@@ -1,183 +1,200 @@
 #hero {
-  padding: calc(var(--space-6) * 2) 0;
-  min-height: 70vh;
-  display: flex;
-  align-items: center;
-  text-align: left;
+    padding: calc(var(--space-6) * 2) 0;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    text-align: left;
 }
+
 
 /* Layout: text left, photo right */
+
 .hero {
-  display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  align-items: center;
-  gap: var(--space-6);
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    align-items: center;
+    gap: var(--space-6);
 }
 
+
 /* Text column */
+
 .hero-text {
-  max-width: 760px;
+    max-width: 760px;
 }
 
 #hero h2 {
-  font-size: 52px;
-  font-weight: 800;
-  margin: 0 0 var(--space-3) 0;
-  background: linear-gradient(135deg, var(--text), var(--primary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+    font-size: 52px;
+    font-weight: 800;
+    margin: 0 0 var(--space-3) 0;
+    background: linear-gradient(135deg, var(--text), var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.hero-line {
-  font-size: 22px;
-  margin-top: var(--space-2);
+#hero .hero-line {
+    font-size: 28px;
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-1);
 }
 
 #typewriter {
-  color: var(--primary);
-  font-weight: 800;
+    color: var(--primary);
+    font-weight: 800;
 }
 
 .cursor {
-  display: inline-block;
-  width: 10px;
-  margin-left: 6px;
-  border-right: 2px solid var(--primary);
-  transform: translateY(2px);
-  animation: cursorBlink 1s steps(1) infinite;
+    display: inline-block;
+    width: 10px;
+    margin-left: 6px;
+    border-right: 2px solid var(--primary);
+    transform: translateY(2px);
+    animation: cursorBlink 1s steps(1) infinite;
 }
 
 @keyframes cursorBlink {
-  50% { opacity: 0; }
+    50% {
+        opacity: 0;
+    }
 }
 
 .hero-about {
-  margin-top: var(--space-4);
-  font-size: 16px;
-  line-height: 1.8;
-  max-width: 620px;
+    margin-top: var(--space-2);
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 620px;
 }
+
 
 /* -----------------------------------
    Photo Card with Ripple Effect
    ----------------------------------- */
 
 .hero-photo-wrapper {
-  justify-self: end;
-  position: relative;
-  display: inline-block;
+    justify-self: end;
+    position: relative;
+    display: inline-block;
 }
+
 
 /* First ripple wave from wrapper */
+
 .hero-photo-wrapper::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 340px;
-  height: 450px;
-  border-radius: 16px;
-  border: 5px solid rgba(var(--primary-rgb), 0.6);
-  z-index: 0;
-  animation: ripple 2s ease-out infinite;
-  animation-delay: .5s;
-  pointer-events: none;
-}
-
-/* Main photo container */
-.hero-photo {
-  position: relative;
-  width: 340px;
-  height: 450px;
-  border-radius: 16px;
-  overflow: hidden;
-  background: var(--surface);
-  border: 1px solid rgba(250, 250, 250, 0.08);
-  box-shadow: 0 18px 55px rgba(0,0,0,0.55);
-  z-index: 1;
-}
-
-/* Glow frame */
-.hero-photo::before {
-  content: "";
-  position: absolute;
-  inset: -7px;
-  border-radius: 18px;
-  background: linear-gradient(
-    -45deg,
-    rgba(var(--primary-rgb), 0.85),
-    rgba(var(--accent-rgb), 0.85)
-  );
-  z-index: -1;
-  transition: 0.35s ease;
-}
-
-/* Second ripple wave from photo */
-.hero-photo::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 340px;
-  height: 450px;
-  border-radius: 16px;
-  border: 5px solid rgba(var(--primary-rgb), 1.0);
-  z-index: -2;
-  animation: ripple 2s ease-out infinite;
-  pointer-events: none;
-}
-
-/* Ripple animation */
-@keyframes ripple {
-  0% {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 340px;
     height: 450px;
-    opacity: 1;
-  }
-  100% {
-    width: 440px;
-    height: 550px;
-    opacity: 0;
-  }
+    border-radius: 16px;
+    border: 5px solid rgba(var(--primary-rgb), 0.6);
+    z-index: 0;
+    animation: ripple 2s ease-out infinite;
+    animation-delay: .5s;
+    pointer-events: none;
 }
+
+
+/* Main photo container */
+
+.hero-photo {
+    position: relative;
+    width: 340px;
+    height: 450px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid rgba(250, 250, 250, 0.08);
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.55);
+    z-index: 1;
+}
+
+
+/* Glow frame */
+
+.hero-photo::before {
+    content: "";
+    position: absolute;
+    inset: -7px;
+    border-radius: 18px;
+    background: linear-gradient( -45deg, rgba(var(--primary-rgb), 0.85), rgba(var(--accent-rgb), 0.85));
+    z-index: -1;
+    transition: 0.35s ease;
+}
+
+
+/* Second ripple wave from photo */
+
+.hero-photo::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 340px;
+    height: 450px;
+    border-radius: 16px;
+    border: 5px solid rgba(var(--primary-rgb), 1.0);
+    z-index: -2;
+    animation: ripple 2s ease-out infinite;
+    pointer-events: none;
+}
+
+
+/* Ripple animation */
+
+@keyframes ripple {
+    0% {
+        width: 340px;
+        height: 450px;
+        opacity: 1;
+    }
+    100% {
+        width: 440px;
+        height: 550px;
+        opacity: 0;
+    }
+}
+
 
 /* Hover effects */
-.hero-photo:hover::before { 
-  inset: -9px; 
+
+.hero-photo:hover::before {
+    inset: -9px;
 }
 
+
 /* Image styling */
+
 .hero-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
+
 
 /* -----------------------------------
    Responsive Design 
    ----------------------------------- */
+
 @media (max-width: 900px) {
-  #hero {
-    text-align: center;
-    min-height: auto;
-  }
-
-  .hero {
-    grid-template-columns: 1fr;
-    justify-items: center;
-  }
-
-  .hero-about {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .hero-photo-wrapper {
-    justify-self: center;
-    margin-top: var(--space-5);
-  }
+    #hero {
+        text-align: center;
+        min-height: auto;
+    }
+    .hero {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .hero-about {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero-photo-wrapper {
+        justify-self: center;
+        margin-top: var(--space-5);
+    }
 }

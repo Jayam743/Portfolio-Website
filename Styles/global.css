@@ -1,329 +1,328 @@
 /* ===================================
    FONT FACES
    =================================== */
+
 @font-face {
-  font-family: "Manrope";
-  src: url("../fonts/Manrope-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+    font-family: "Manrope";
+    src: url("../fonts/Manrope-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
+
 @font-face {
-  font-family: "Manrope";
-  src: url("../fonts/Manrope-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
+    font-family: "Manrope";
+    src: url("../fonts/Manrope-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
 }
+
 @font-face {
-  font-family: "Manrope";
-  src: url("../fonts/Manrope-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
+    font-family: "Manrope";
+    src: url("../fonts/Manrope-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
 }
+
 @font-face {
-  font-family: "Manrope";
-  src: url("../fonts/Manrope-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+    font-family: "Manrope";
+    src: url("../fonts/Manrope-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
 }
+
 @font-face {
-  font-family: "Manrope";
-  src: url("../fonts/Manrope-ExtraBold.woff2") format("woff2");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
+    font-family: "Manrope";
+    src: url("../fonts/Manrope-ExtraBold.woff2") format("woff2");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
 }
 
 
 /* ===================================
    BASE RESET
    =================================== */
-* { 
-  box-sizing: border-box; 
+
+* {
+    box-sizing: border-box;
 }
 
-html, body { 
-  height: 100%; 
+html,
+body {
+    height: 100%;
 }
 
-body { 
-  margin: 0; 
+body {
+    margin: 0;
 }
 
 
 /* ===================================
    GLOBAL STYLES
    =================================== */
+
 body {
-  font-family: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
+    font-family: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
 }
 
 .container {
-  width: min(var(--container), calc(100% - 32px));
-  margin: 0 auto;
+    width: min(var(--container), calc(100% - 32px));
+    margin: 0 auto;
 }
 
-h1, h2, h3 {
-  margin: 0 0 var(--space-2) 0;
-  line-height: 1.2;
+h1,
+h2,
+h3 {
+    margin: 0 0 var(--space-2) 0;
+    line-height: 1.2;
 }
 
 p {
-  margin: 0;
-  color: var(--muted);
+    margin: 0;
+    color: var(--muted);
 }
 
 
 /* ===================================
    HEADER / NAVIGATION
    =================================== */
+
 header {
-  padding: var(--space-4) 0;
-  border-bottom: 1px solid var(--border);
-  background: rgba(30, 30, 30, 0.6);
-  backdrop-filter: blur(10px);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--border);
+    background: rgba(30, 30, 30, 0.6);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 nav.container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
 }
 
 nav h1 {
-  font-size: 50px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 0;
+    font-size: 50px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
 }
 
 nav ul {
-  list-style: none;
-  display: flex;
-  gap: var(--space-4);
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    display: flex;
+    gap: var(--space-4);
+    padding: 0;
+    margin: 0;
 }
 
 nav a {
-  color: var(--muted);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 25px;
-  transition: color 200ms;
-  position: relative;
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 25px;
+    transition: color 200ms;
+    position: relative;
 }
 
 nav a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--primary);
-  transition: width 300ms;
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 300ms;
 }
 
 nav a:hover {
-  color: var(--primary);
+    color: var(--primary);
 }
 
 nav a:hover::after {
-  width: 100%;
+    width: 100%;
 }
 
 
 /* ===================================
    SECTION STYLING & BACKGROUNDS
    =================================== */
+
 section {
-  padding: calc(var(--space-6) * 1.2) 0;
-  position: relative;
+    padding: calc(var(--space-6) * 1.2) 0;
+    position: relative;
 }
 
 section h2 {
-  font-size: 32px;
-  font-weight: 800;
-  color: var(--text);
-  margin-bottom: var(--space-2);
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: var(--space-2);
 }
 
 section p.muted {
-  font-size: 16px;
-  color: var(--muted);
-  margin-bottom: var(--space-5);
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: var(--space-5);
 }
+
 
 /* Decorative line under section headings */
+
 section h2::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  margin-top: var(--space-2);
-  border-radius: 2px;
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    margin-top: var(--space-2);
+    border-radius: 2px;
 }
 
+
 /* Alternating section backgrounds */
+
 #hero {
-  background: var(--bg);
-  background-image: radial-gradient(
-    circle at 50% 20%, 
-    rgba(214, 198, 168, 0.08), 
-    transparent 60%
-  );
+    background: var(--bg);
+    background-image: radial-gradient( circle at 50% 20%, rgba(214, 198, 168, 0.08), transparent 60%);
 }
 
 #projects {
-  background: #0D0D0D;
-  min-height: 700px;
-  padding: calc(var(--space-6) * 1.5) 0;
+    background: #0D0D0D;
+    min-height: 700px;
+    padding: calc(var(--space-6) * 1.5) 0;
 }
 
 #all-projects {
-  background: var(--surface);
-  padding: calc(var(--space-6) * 1.5) 0;
+    background: var(--surface);
+    padding: calc(var(--space-6) * 1.5) 0;
 }
 
 #skills {
-  background: #0D0D0D;
+    background: #0D0D0D;
 }
 
 #about {
-  background: var(--surface);
+    background: var(--surface);
 }
 
 #contact {
-  background: #0D0D0D;
+    background: #0D0D0D;
 }
+
 
 /* Subtle border between sections */
+
 section {
-  border-bottom: 1px solid rgba(214, 198, 168, 0.05);
+    border-bottom: 1px solid rgba(214, 198, 168, 0.05);
 }
-
-
-
 
 
 /* ===================================
    ALL PROJECTS GRID
    =================================== */
+
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-4);
-  margin-top: var(--space-4);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-4);
 }
 
 .project-card-grid {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: var(--space-4);
-  transition: all 300ms;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    transition: all 300ms;
 }
 
 .project-card-grid:hover {
-  border-color: var(--primary);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow);
+    border-color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
 }
 
 
 /* ===================================
    SKILLS SECTION
    =================================== */
+
 #skills p {
-  font-size: 18px;
-  line-height: 1.8;
-}
-
-
-/* ===================================
-   ABOUT SECTION
-   =================================== */
-#about p {
-  max-width: 700px;
-  font-size: 18px;
-  line-height: 1.8;
+    font-size: 18px;
+    line-height: 1.8;
 }
 
 
 /* ===================================
    CONTACT SECTION
    =================================== */
+
 #contact p {
-  font-size: 16px;
-  line-height: 1.8;
+    font-size: 16px;
+    line-height: 1.8;
 }
 
 #contact a {
-  color: var(--primary);
-  text-decoration: none;
-  transition: color 200ms;
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 200ms;
 }
 
 #contact a:hover {
-  color: var(--accent);
-  text-decoration: underline;
+    color: var(--accent);
+    text-decoration: underline;
 }
 
 
 /* ===================================
    FOOTER
    =================================== */
+
 footer {
-  padding: var(--space-5) 0;
-  border-top: 1px solid var(--border);
-  text-align: center;
-  background: var(--bg);
+    padding: var(--space-5) 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    background: var(--bg);
 }
 
 footer p {
-  font-size: 14px;
+    font-size: 14px;
 }
 
-
 @media (max-width: 768px) {
-  nav.container {
-    flex-direction: column;
-    gap: var(--space-3);
-  }
-
-  nav ul {
-    gap: var(--space-3);
-  }
-
-  #hero h2 {
-    font-size: 36px;
-  }
-
-  section h2 {
-    font-size: 28px;
-  }
-
-  #projects {
-    min-height: 500px;
-  }
-
-  section {
-    padding: var(--space-5) 0;
-  }
+    nav.container {
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+    nav ul {
+        gap: var(--space-3);
+    }
+    #hero h2 {
+        font-size: 36px;
+    }
+    section h2 {
+        font-size: 28px;
+    }
+    #projects {
+        min-height: 500px;
+    }
+    section {
+        padding: var(--space-5) 0;
+    }
 }
