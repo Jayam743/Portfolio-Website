@@ -1,0 +1,289 @@
+/* ===================================
+   ALL PROJECTS HORIZONTAL SCROLL
+   =================================== */
+
+#all-projects {
+    position: relative;
+}
+
+.projects-scroll-wrapper {
+    position: relative;
+    max-width: min(var(--container), calc(100% - 32px));
+    margin: var(--space-5) auto 0;
+}
+
+
+/* Horizontal scrolling container */
+
+.projects-scroll {
+    display: flex;
+    gap: var(--space-3);
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: var(--space-3) var(--space-2);
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) rgba(var(--primary-rgb), 0.1);
+}
+
+.projects-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.projects-scroll::-webkit-scrollbar-track {
+    background: rgba(var(--primary-rgb), 0.1);
+    border-radius: 4px;
+}
+
+.projects-scroll::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 4px;
+}
+
+.projects-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+
+/* Smaller project cards */
+
+.project-card-grid {
+    background: var(--surface);
+    border: 1px solid rgba(var(--primary-rgb), 0.2);
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    transition: all 300ms ease;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    min-width: 220px;
+    max-width: 220px;
+    flex-shrink: 0;
+}
+
+.project-card-grid:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.2);
+}
+
+
+/* Project Icon - smaller */
+
+.project-icon img {
+    width: 190px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+
+
+/* Project Title - smaller */
+
+.project-card-grid h3 {
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 var(--space-1) 0;
+    line-height: 1;
+}
+
+
+/* Project Description - smaller */
+
+.project-description {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-clamp: 3;
+    overflow: hidden;
+}
+
+
+/* Tech Stack Badges - smaller */
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: var(--space-1);
+}
+
+.tech-badge {
+    background: rgba(var(--primary-rgb), 0.1);
+    border: 1px solid rgba(var(--primary-rgb), 0.3);
+    color: var(--primary);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+
+/* Project Links - smaller */
+
+.project-links {
+    display: flex;
+    gap: 6px;
+    margin-top: var(--space-2);
+}
+
+.project-link {
+    flex: 1;
+    background: rgba(var(--primary-rgb), 0.1);
+    border: 2px solid rgba(var(--primary-rgb), 0.3);
+    color: var(--primary);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 11px;
+    transition: all 300ms ease;
+}
+
+.project-link:hover {
+    background: var(--primary);
+    color: var(--bg);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
+}
+
+
+/* Coming Soon */
+
+.coming-soon {
+    color: var(--muted);
+    font-size: 11px;
+    font-style: italic;
+    text-align: center;
+    margin-top: var(--space-1);
+}
+
+
+/* Project Note */
+
+.project-note {
+    color: var(--accent);
+    font-size: 10px;
+    font-style: italic;
+    margin-top: var(--space-1);
+    text-align: center;
+}
+
+
+/* Navigation Arrows */
+
+.scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--surface);
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 300ms ease;
+    z-index: 10;
+    font-size: 24px;
+    font-weight: bold;
+    user-select: none;
+}
+
+.scroll-arrow:hover {
+    background: var(--primary);
+    color: var(--bg);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 20px rgba(var(--primary-rgb), 0.4);
+}
+
+.scroll-arrow:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.scroll-arrow.left {
+    left: -25px;
+}
+
+.scroll-arrow.right {
+    right: -25px;
+}
+
+.scroll-arrow.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+
+/* "More Coming Soon" card */
+
+.more-coming-card {
+    background: rgba(var(--primary-rgb), 0.05);
+    border: 2px dashed rgba(var(--primary-rgb), 0.3);
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    min-width: 220px;
+    max-width: 220px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    text-align: center;
+}
+
+.more-coming-card .icon {
+    font-size: 48px;
+}
+
+.more-coming-card h4 {
+    color: var(--primary);
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.more-coming-card p {
+    color: var(--muted);
+    font-size: 12px;
+    margin: 0;
+}
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .scroll-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+    .scroll-arrow.left {
+        left: -10px;
+    }
+    .scroll-arrow.right {
+        right: -10px;
+    }
+    .project-card-grid {
+        min-width: 180px;
+        max-width: 180px;
+    }
+    .more-coming-card {
+        min-width: 180px;
+        max-width: 180px;
+    }
+}

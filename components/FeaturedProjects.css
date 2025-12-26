@@ -103,6 +103,13 @@
     transform: rotateY(calc((360deg / var(--quantity)) * var(--index))) translateZ(420px);
 }
 
+.img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+}
+
 
 /* Pause animation on hover */
 

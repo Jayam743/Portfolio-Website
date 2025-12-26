@@ -64,8 +64,22 @@ Overall productive day!
 
 ### Planned: 
 - Finish the About Me, 
-- Confirm the formating
+- Finish the formating
 
 ### Completed:
--
+- About ME
+
+Had some other stuff.
+
+## Day 4 - December 24, 2025 
+
+off 
+
+## Day 5 - December 25, 2025 
+Merry Christmas
+
+### Planned: 
+- Add my projects
+- 
+
 <!-- Continue adding one section per day -->

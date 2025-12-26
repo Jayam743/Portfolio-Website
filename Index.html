@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="components/Hero.css">
     <link rel="stylesheet" href="components/TechStack.css">
     <link rel="stylesheet" href="components/HireMeButton.css">
+    <link rel="stylesheet" href="components/AllProject.css">
 </head>
 
 <body>
@@ -77,61 +78,34 @@
                 <div class="featured-wrap">
                     <div class="wrapper">
                         <div id="featuredRing" class="inner" style="--quantity: 6;">
-                            <div class="card" style="--index:0;">
-                                <a href="#">
-                                    <div class="img"></div>
-                                    <div class="title">Project 01</div>
-                                    <div class="meta">Repo link soon</div>
-                                </a>
-                            </div>
-                            <div class="card" style="--index:1;">
-                                <a href="#">
-                                    <div class="img"></div>
-                                    <div class="title">Project 02</div>
-                                    <div class="meta">Repo link soon</div>
-                                </a>
-                            </div>
-                            <div class="card" style="--index:2;">
-                                <a href="#">
-                                    <div class="img"></div>
-                                    <div class="title">Project 03</div>
-                                    <div class="meta">Repo link soon</div>
-                                </a>
-                            </div>
-                            <div class="card" style="--index:3;">
-                                <a href="#">
-                                    <div class="img"></div>
-                                    <div class="title">Project 04</div>
-                                    <div class="meta">Repo link soon</div>
-                                </a>
-                            </div>
-                            <div class="card" style="--index:4;">
-                                <a href="#">
-                                    <div class="img"></div>
-                                    <div class="title">Project 05</div>
-                                    <div class="meta">Repo link soon</div>
-                                </a>
-                            </div>
-                            <div class="card" style="--index:5;">
-                                <a href="#">
-                                    <div class="img"></div>
-                                    <div class="title">Project 06</div>
-                                    <div class="meta">Repo link soon</div>
-                                </a>
-                            </div>
-
+                            <!-- JavaScript automatically generates cards here from projects.js -->
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ALL PROJECTS GRID -->
+        <!-- ALL PROJECTS HORIZONTAL SCROLL -->
         <section id="all-projects">
             <div class="container">
                 <h2>All Projects</h2>
-                <div id="projectsGrid" class="projects-grid">
-                    <!-- JS injects all project cards here -->
+                <p class="muted">Scroll through my complete project collection</p>
+
+                <div class="projects-scroll-wrapper">
+                    <!-- Left Arrow -->
+                    <div id="scrollLeft" class="scroll-arrow left disabled">
+                        ‹
+                    </div>
+
+                    <!-- Scrolling Container -->
+                    <div id="projectsScroll" class="projects-scroll">
+                        <!-- JavaScript automatically generates project cards here from projects.js -->
+                    </div>
+
+                    <!-- Right Arrow -->
+                    <div id="scrollRight" class="scroll-arrow right">
+                        ›
+                    </div>
                 </div>
             </div>
         </section>
@@ -269,6 +243,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="scripts/project.js"></script>
     <script src="scripts/main.js"></script>
 </body>
 
