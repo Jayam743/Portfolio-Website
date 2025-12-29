@@ -1,34 +1,49 @@
 # Personal Portfolio Website
 
-This repo contains the static portfolio website for Jayam Patel — a compact, responsive site showcasing projects, skills, and contact information.
+This repository contains the **fully deployed personal portfolio website** for **Jayam Patel**.  
+It is a clean, responsive, and modern static site showcasing projects, technical skills, and contact information.
 
-The site is ready for deployment; only deployment remains (user will deploy tomorrow).
+---
+
+## Live Site
+
+
+---
+
+## Overview
+
+- Static, production-ready portfolio website
+- Responsive across desktop, tablet, and mobile
+- Modular CSS architecture with reusable components
+- JavaScript-driven project rendering and UI interactions
+- Designed for recruiters, engineers, and collaborators
 
 ---
 
 ## Technologies Used
 
-- HTML5, CSS3 (custom properties, grid, flex, animations)
-- Vanilla JavaScript for DOM generation and interactivity
-- Local assets for images and icons
+- **HTML5**
+- **CSS3**
+  - Custom properties (CSS variables)
+  - Grid & Flexbox layouts
+  - Animations & transitions
+- **Vanilla JavaScript**
+  - DOM generation
+  - UI logic and interactivity
+- **External Services**
+  - FormSubmit (contact form handling)
+- **Assets**
+  - Local images, icons, and resume files
 
 ---
-
-## Project Structure
-
-- `Index.html` — main site entry
-- `styles/` — global and component CSS
-- `components/` — modular component styles (Hero, ContactForm, FeaturedProjects, etc.)
-- `scripts/project.js` — project data and data helpers
-- `scripts/main.js` — DOM generation and UI logic
-- `assets/` — images and media
-
----
-
 
 
 ## Contact
 
-If you want to reach me: jayampatel7473@gmail.com
+📧 **Email:** jayampatel7473@gmail.com  
+🔗 **GitHub:** https://github.com/SmokyOP743  
+🔗 **LinkedIn:** https://www.linkedin.com/in/jayam-patel73/
 
 ---
+
+© 2025 Jayam Patel
