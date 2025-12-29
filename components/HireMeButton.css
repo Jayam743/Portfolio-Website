@@ -2,6 +2,12 @@
    HIRE ME BUTTON - SANDSTONE THEME
    =================================== */
 
+
+/* Inspired by https://uiverse.io/nikk7007/blue-mayfly-40 */
+
+
+/* Main button styling with border and hover effects */
+
 .hire-me-btn {
     --bg: #121212;
     /* Your background */
@@ -25,6 +31,9 @@
     display: inline-block;
 }
 
+
+/* Button text with smooth color transition */
+
 .hire-me-btn>.text {
     font-weight: 700;
     color: var(--primary);
@@ -37,7 +46,7 @@
 }
 
 
-/* Download icon */
+/* Download icon styling */
 
 .hire-me-btn .icon {
     display: inline-block;
@@ -45,17 +54,23 @@
 }
 
 
-/* Bubble effects */
+/* Bubble expansion animation from top-left */
 
 .hire-me-btn::before {
     top: 0;
     left: 0;
 }
 
+
+/* Bubble expansion animation from bottom-right */
+
 .hire-me-btn::after {
     top: 100%;
     left: 100%;
 }
+
+
+/* Bubble effect pseudo-elements */
 
 .hire-me-btn::before,
 .hire-me-btn::after {
@@ -71,20 +86,29 @@
 }
 
 
-/* Hover effects */
+/* Button border glow on hover */
 
 .hire-me-btn:hover {
     border-color: var(--primary);
     box-shadow: 0 0 30px rgba(214, 198, 168, 0.4);
 }
 
+
+/* Text color change on hover */
+
 .hire-me-btn:hover>.text {
     color: var(--bg);
 }
 
+
+/* Icon animation on hover */
+
 .hire-me-btn:hover .icon {
     transform: translateY(3px);
 }
+
+
+/* Bubble expansion on hover */
 
 .hire-me-btn:hover::before,
 .hire-me-btn:hover::after {
@@ -92,7 +116,7 @@
 }
 
 
-/* Active/click effect */
+/* Button scale and brightness on click */
 
 .hire-me-btn:active {
     scale: 0.98;
@@ -100,7 +124,7 @@
 }
 
 
-/* Button container in hero */
+/* Flex container for buttons group */
 
 .hero-buttons {
     display: flex;
@@ -111,7 +135,7 @@
 }
 
 
-/* Responsive */
+/* Mobile responsive sizing */
 
 @media (max-width: 768px) {
     .hire-me-btn {

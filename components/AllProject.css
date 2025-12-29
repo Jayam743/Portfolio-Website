@@ -2,9 +2,15 @@
    ALL PROJECTS HORIZONTAL SCROLL
    =================================== */
 
+
+/* Container for the entire projects section */
+
 #all-projects {
     position: relative;
 }
+
+
+/* Centers and constrains the horizontal scroll area */
 
 .projects-scroll-wrapper {
     position: relative;
@@ -13,7 +19,7 @@
 }
 
 
-/* Horizontal scrolling container */
+/* Horizontal scrolling row for project cards */
 
 .projects-scroll {
     display: flex;
@@ -24,6 +30,9 @@
     scrollbar-width: thin;
     scrollbar-color: var(--primary) rgba(var(--primary-rgb), 0.1);
 }
+
+
+/* Horizontal scrollbar styling (WebKit) */
 
 .projects-scroll::-webkit-scrollbar {
     height: 8px;
@@ -44,7 +53,7 @@
 }
 
 
-/* Smaller project cards */
+/* Individual project card */
 
 .project-card-grid {
     background: var(--surface);
@@ -55,15 +64,16 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-1);
-    /* FIXED DIMENSIONS */
     min-width: 220px;
     max-width: 220px;
     min-height: 300px;
-    /* ADD THIS */
     max-height: 380px;
     flex-shrink: 0;
     overflow: hidden;
 }
+
+
+/* Lift + highlight card on hover */
 
 .project-card-grid:hover {
     border-color: var(--primary);
@@ -72,7 +82,7 @@
 }
 
 
-/* Project Icon - smaller */
+/* Project Image Container*/
 
 .project-icon img {
     width: 100%;
@@ -110,14 +120,9 @@
     line-height: 1.4;
     flex-grow: 0;
     height: 45px;
-    /* Increase height to show ~3 lines */
     overflow-y: auto;
-    /* Enable vertical scroll */
     overflow-x: hidden;
-    /* Hide horizontal overflow */
     padding-right: 4px;
-    /* Space for scrollbar */
-    /* Custom scrollbar styling */
     scrollbar-width: thin;
     scrollbar-color: var(--primary) rgba(var(--primary-rgb), 0.1);
 }
@@ -144,7 +149,7 @@
 }
 
 
-/* Tech Stack Badges - smaller */
+/* Project Tech Stack Badges Container */
 
 .project-tech {
     display: flex;
@@ -152,6 +157,9 @@
     gap: 4px;
     margin-top: var(--space-1);
 }
+
+
+/* Individual tech badge */
 
 .tech-badge {
     background: rgba(var(--primary-rgb), 0.1);
@@ -166,13 +174,16 @@
 }
 
 
-/* Project Links - smaller */
+/* Project Links Buttons */
 
 .project-links {
     display: flex;
     gap: 6px;
     margin-top: var(--space-2);
 }
+
+
+/* Individual project link button */
 
 .project-link {
     flex: 1;
@@ -187,6 +198,9 @@
     font-size: 11px;
     transition: all 300ms ease;
 }
+
+
+/* Hover effect for project links */
 
 .project-link:hover {
     background: var(--primary);
@@ -242,6 +256,9 @@
     user-select: none;
 }
 
+
+/* Hover effect */
+
 .scroll-arrow:hover {
     background: var(--primary);
     color: var(--bg);
@@ -249,17 +266,29 @@
     box-shadow: 0 4px 20px rgba(var(--primary-rgb), 0.4);
 }
 
+
+/* Active (click) effect */
+
 .scroll-arrow:active {
     transform: translateY(-50%) scale(0.95);
 }
+
+
+/* Adjust position for left arrow */
 
 .scroll-arrow.left {
     left: -25px;
 }
 
+
+/* Adjust position for right arrow */
+
 .scroll-arrow.right {
     right: -25px;
 }
+
+
+/* Disabled state */
 
 .scroll-arrow.disabled {
     opacity: 0.3;
@@ -286,9 +315,15 @@
     text-align: center;
 }
 
+
+/* Icon at the top */
+
 .more-coming-card .icon {
     font-size: 48px;
 }
+
+
+/* Title text */
 
 .more-coming-card h4 {
     color: var(--primary);
@@ -296,6 +331,9 @@
     font-weight: 700;
     margin: 0;
 }
+
+
+/* Description text */
 
 .more-coming-card p {
     color: var(--muted);

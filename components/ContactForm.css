@@ -1,5 +1,8 @@
 /* Contact Form Styling */
 
+
+/* Main container for the contact form */
+
 .contact-card {
     background: var(--surface);
     border: 1px solid rgba(var(--primary-rgb), 0.2);
@@ -10,11 +13,17 @@
     margin: 0 auto;
 }
 
+
+/* Subtitle text below the contact form title */
+
 .contact-subtitle {
     color: var(--muted);
     margin-bottom: var(--space-5);
     font-size: 16px;
 }
+
+
+/* Two-column grid layout for form inputs */
 
 .form-row {
     display: grid;
@@ -23,15 +32,24 @@
     margin-bottom: var(--space-4);
 }
 
+
+/* Flex container for form inputs and labels */
+
 .form-group {
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
 }
 
+
+/* Make form group span full width */
+
 .form-group.full-width {
     grid-column: 1 / -1;
 }
+
+
+/* Styling for form labels */
 
 .form-group label {
     color: var(--primary);
@@ -40,6 +58,9 @@
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
+
+
+/* Base input and textarea styles */
 
 .form-group input,
 .form-group textarea {
@@ -54,11 +75,17 @@
     outline: none;
 }
 
+
+/* Placeholder text appearance */
+
 .form-group input::placeholder,
 .form-group textarea::placeholder {
     color: var(--muted);
     opacity: 0.5;
 }
+
+
+/* Focus state with highlight and shadow */
 
 .form-group input:focus,
 .form-group textarea:focus {
@@ -67,10 +94,16 @@
     box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.1);
 }
 
+
+/* Textarea minimum height and resize control */
+
 .form-group textarea {
     min-height: 140px;
     resize: vertical;
 }
+
+
+/* Primary submit button styling */
 
 .submit-btn {
     background: var(--primary);
@@ -89,15 +122,24 @@
     margin-top: var(--space-3);
 }
 
+
+/* Button hover effect with lift */
+
 .submit-btn:hover {
     background: var(--accent);
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(var(--primary-rgb), 0.3);
 }
 
+
+/* Button press down animation */
+
 .submit-btn:active {
     transform: translateY(0);
 }
+
+
+/* Success message container */
 
 .success-message {
     background: rgba(var(--accent-rgb), 0.15);
@@ -110,10 +152,16 @@
     display: none;
 }
 
+
+/* Show success message with animation */
+
 .success-message.show {
     display: block;
     animation: slideDown 400ms ease-out;
 }
+
+
+/* Slide down animation for success message */
 
 @keyframes slideDown {
     from {
@@ -125,6 +173,9 @@
         transform: translateY(0);
     }
 }
+
+
+/* Mobile responsive adjustments */
 
 @media (max-width: 768px) {
     .form-row {

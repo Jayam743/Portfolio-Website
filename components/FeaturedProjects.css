@@ -1,6 +1,14 @@
+/*To inspiration from https://uiverse.io/ilkhoeri/swift-panda-38*/
+
+
+/* Container for featured projects section */
+
 .featured-wrap {
     margin-top: var(--space-5);
 }
+
+
+/* 3D carousel wrapper container */
 
 .wrapper {
     width: 100%;
@@ -15,7 +23,7 @@
 }
 
 
-/* 3D ring - NOW AT EYE LEVEL */
+/* 3D rotating container for carousel cards */
 
 .inner {
     --w: 180px;
@@ -34,6 +42,9 @@
     will-change: transform;
 }
 
+
+/* Continuous 3D rotation animation */
+
 @keyframes rotating {
     from {
         transform: translate(-50%, -50%) perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(0);
@@ -44,7 +55,7 @@
 }
 
 
-/* Card tiles */
+/* Individual project card in carousel */
 
 .card {
     position: absolute;
@@ -59,7 +70,7 @@
 }
 
 
-/* Clickable full tile */
+/* Full-width clickable card link */
 
 .card a {
     display: flex;
@@ -71,6 +82,9 @@
     text-decoration: none;
     color: var(--text);
 }
+
+
+/* Project image container with gradient background */
 
 .img {
     flex: 1;
@@ -84,6 +98,9 @@
     overflow: hidden;
 }
 
+
+/* Project title styling */
+
 .card .title {
     font-weight: 800;
     font-size: 15px;
@@ -91,11 +108,17 @@
     color: var(--text);
 }
 
+
+/* Project metadata description */
+
 .card .meta {
     font-size: 13px;
     color: var(--muted);
     line-height: 1.35;
 }
+
+
+/* Card hover and focus state with elevation effect */
 
 .card:hover,
 .card:focus-within {
@@ -103,6 +126,9 @@
     box-shadow: 0 0 40px rgba(214, 198, 168, 0.3), 0 25px 80px rgba(0, 0, 0, 0.8);
     transform: rotateY(calc((360deg / var(--quantity)) * var(--index))) translateZ(420px);
 }
+
+
+/* Project image sizing and containment */
 
 .img img {
     width: 100%;
@@ -112,14 +138,14 @@
 }
 
 
-/* Pause animation on hover */
+/* Stop carousel rotation on hover */
 
 .wrapper:hover .inner {
     animation-play-state: paused;
 }
 
 
-/* Accessibility */
+/* Respect motion preferences for accessibility */
 
 @media (prefers-reduced-motion: reduce) {
     .inner {

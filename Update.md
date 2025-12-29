@@ -102,7 +102,53 @@ Off
 - Finish Website
 - Finish Contact Form Backend
 
-## Completed: 
-- Website 
-- 
-<!-- Continue adding one section per day -->
+### Completed: 
+- Website completed
+- Finalized contact form markup and styles
+
+---
+
+## Day 9 - December 29, 2025
+**Status:** Completed
+
+### Planned:
+- Final QA and responsive checks
+- Add concise comments across CSS/JS and README
+- Prepare deployment notes
+
+### Completed:
+- Performed responsive and accessibility checks across breakpoints
+- Added one-line comments to component CSS and JS files
+- Updated `README.md` with run and deployment instructions
+- Final local test: served site with a simple static server and verified interactive features
+
+---
+
+## Deployment (notes)
+
+The site is static and can be deployed to any static host. Quick options:
+
+- GitHub Pages (quick):
+
+    1. Push your repo to GitHub.
+    2. In repository Settings → Pages, select branch `main` (or `gh-pages`) and root `/`.
+    3. Save — site will be published at `https://<your-username>.github.io/<repo>`.
+
+- Netlify (drag & drop or from Git):
+
+    1. Create a Netlify account and connect your GitHub repo (or drag the built folder).
+    2. Set publish directory to `/` (this is a static site).
+    3. Deploy — Netlify provides a URL and optional custom domain.
+
+- Vercel (from Git):
+
+    1. Import the repo into Vercel, set framework to "Other" and root to `/`.
+    2. Deploy — Vercel will provide a preview and production URL.
+
+Notes:
+- No build step is required; files are static. If you change paths or use a subfolder, adjust the publish settings.
+- I left deployment to you as requested — you can deploy with any of the above tomorrow.
+
+---
+
+<!-- End of updates -->

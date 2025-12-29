@@ -2,6 +2,7 @@
 // PROJECT GENERATION
 // ===================================
 
+// Initialize when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
 
     // Generate Featured Projects (3D Ring)
@@ -14,8 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // CONTACT FORM HANDLING
     // ===================================
 
+    // Get contact form element
     const contactForm = document.getElementById('contactForm');
 
+    // Handle form submission
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             const submitBtn = this.querySelector('.submit-btn');
@@ -27,8 +30,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===================================
     // HERO TYPEWRITER
     // ===================================
+
+    // Get typewriter target element
     const target = document.getElementById("typewriter");
 
+    // Start typewriter effect if element exists
     if (target) {
         const words = [
             "Software Developer",
@@ -41,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let charIndex = 0;
         let isDeleting = false;
 
+        // Typewriter animation function
         function typeEffect() {
             const currentWord = words[wordIndex];
 
@@ -74,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // FEATURED PROJECTS (3D RING)
 // ===================================
 
+// Generate featured projects in 3D carousel
 function generateFeaturedProjects() {
     const featuredRing = document.getElementById('featuredRing');
     if (!featuredRing) return;
@@ -116,6 +124,7 @@ function generateFeaturedProjects() {
 // ALL PROJECTS HORIZONTAL SCROLL
 // ===================================
 
+// Generate all projects in horizontal scrollable grid
 function generateAllProjects() {
     const projectsScroll = document.getElementById('projectsScroll');
     if (!projectsScroll) return;
@@ -170,6 +179,7 @@ function generateAllProjects() {
 // SCROLL ARROW FUNCTIONALITY
 // ===================================
 
+// Initialize left/right scroll arrow buttons
 function initScrollArrows() {
     const projectsScroll = document.getElementById('projectsScroll');
     const leftArrow = document.getElementById('scrollLeft');
@@ -180,7 +190,7 @@ function initScrollArrows() {
     // Scroll amount (width of one card + gap)
     const scrollAmount = 250;
 
-    // Left arrow click
+    // Left arrow click handler
     leftArrow.addEventListener('click', () => {
         projectsScroll.scrollBy({
             left: -scrollAmount,
@@ -188,7 +198,7 @@ function initScrollArrows() {
         });
     });
 
-    // Right arrow click
+    // Right arrow click handler
     rightArrow.addEventListener('click', () => {
         projectsScroll.scrollBy({
             left: scrollAmount,
@@ -196,7 +206,7 @@ function initScrollArrows() {
         });
     });
 
-    // Update arrow states on scroll
+    // Update arrow visibility states based on scroll position
     function updateArrows() {
         const scrollLeft = projectsScroll.scrollLeft;
         const maxScroll = projectsScroll.scrollWidth - projectsScroll.clientWidth;

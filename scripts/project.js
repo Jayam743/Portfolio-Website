@@ -1,3 +1,4 @@
+// Projects data array with all portfolio projects
 const projects = [{
         id: 1,
         name: "Portfolio Website",
@@ -42,19 +43,17 @@ const projects = [{
     // Just copy the structure above and change the values
 ];
 
-
-
-// Get only featured projects (for 3D ring)
+// Get only featured projects for 3D carousel
 function getFeaturedProjects() {
     return projects.filter(p => p.featured);
 }
 
-// Get all projects (for grid section)
+// Get all projects for grid display
 function getAllProjects() {
     return projects;
 }
 
-// Export for use in main.js
+// Export functions for use in main.js
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { projects, getFeaturedProjects, getAllProjects };
 }

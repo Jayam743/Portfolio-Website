@@ -1,3 +1,5 @@
+/* Hero section container with vertical centering */
+
 #hero {
     padding: calc(var(--space-6) * 2) 0;
     min-height: 70vh;
@@ -17,11 +19,14 @@
 }
 
 
-/* Text column */
+/* Container for hero text content */
 
 .hero-text {
     max-width: 760px;
 }
+
+
+/* Main heading with gradient text effect */
 
 #hero h2 {
     font-size: 52px;
@@ -33,16 +38,25 @@
     background-clip: text;
 }
 
+
+/* Subtitle line styling */
+
 #hero .hero-line {
     font-size: 28px;
     margin-top: var(--space-2);
     margin-bottom: var(--space-1);
 }
 
+
+/* Typewriter effect text color */
+
 #typewriter {
     color: var(--primary);
     font-weight: 800;
 }
+
+
+/* Blinking cursor for typewriter effect */
 
 .cursor {
     display: inline-block;
@@ -53,11 +67,17 @@
     animation: cursorBlink 1s steps(1) infinite;
 }
 
+
+/* Cursor blinking animation */
+
 @keyframes cursorBlink {
     50% {
         opacity: 0;
     }
 }
+
+
+/* About section text styling */
 
 .hero-about {
     margin-top: var(--space-2);
@@ -67,9 +87,7 @@
 }
 
 
-/* -----------------------------------
-   Photo Card with Ripple Effect
-   ----------------------------------- */
+/* Photo wrapper container for ripple effect */
 
 .hero-photo-wrapper {
     justify-self: end;
@@ -78,7 +96,7 @@
 }
 
 
-/* First ripple wave from wrapper */
+/* First outer ripple wave animation */
 
 .hero-photo-wrapper::before {
     content: "";
@@ -97,7 +115,7 @@
 }
 
 
-/* Main photo container */
+/* Main photo image container */
 
 .hero-photo {
     position: relative;
@@ -112,7 +130,7 @@
 }
 
 
-/* Glow frame */
+/* Glowing border background */
 
 .hero-photo::before {
     content: "";
@@ -125,7 +143,7 @@
 }
 
 
-/* Second ripple wave from photo */
+/* Second inner ripple wave animation */
 
 .hero-photo::after {
     content: "";
@@ -143,7 +161,7 @@
 }
 
 
-/* Ripple animation */
+/* Expanding ripple animation */
 
 @keyframes ripple {
     0% {
@@ -159,14 +177,14 @@
 }
 
 
-/* Hover effects */
+/* Expand glow on photo hover */
 
 .hero-photo:hover::before {
     inset: -9px;
 }
 
 
-/* Image styling */
+/* Photo image sizing */
 
 .hero-photo img {
     width: 100%;
@@ -176,9 +194,7 @@
 }
 
 
-/* -----------------------------------
-   Responsive Design 
-   ----------------------------------- */
+/* Mobile responsive layout */
 
 @media (max-width: 900px) {
     #hero {
