@@ -34,13 +34,11 @@ const projects = [{
         name: "Luxeciaga Website",
         description: "Responsive business website built during internship at Luxeciaga with dynamic content management.",
         tech: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-        github: null, // Keep null if you can't share code
+        github: null,
         demo: "https://luxeciaga.com/",
         icon: "assets/Luxeciaga.png",
         featured: true,
     }
-    // Add more projects here as you build them!
-    // Just copy the structure above and change the values
 ];
 
 // Get only featured projects for 3D carousel
