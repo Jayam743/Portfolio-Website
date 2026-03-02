@@ -1,16 +1,36 @@
 // Projects data array with all portfolio projects
 const projects = [{
-        id: 1,
+    id: 1,
+    name: "Smart UML Degree Pathway",
+    description: "Full-stack academic planning platform that parses UMass Lowell transcripts via a Python PDF pipeline, maps degree progress, and delivers AI-powered course recommendations and schedule generation.",
+    tech: ["Python", "Next.js", "PostgreSQL", "Flask", "NLP", "REST APIs"],
+    github: "https://github.com/SmokyOP743/smart-degree-pathway", 
+    demo: "https://smart-degree-pathway.vercel.app",
+    icon: "./assets/SMART_UML.png", 
+    featured: true,
+    },
+    {
+        id: 2,
         name: "Portfolio Website",
         description: "Personal portfolio built with vanilla HTML, CSS, and JavaScript. Features 3D project carousel, responsive design, and custom animations.",
         tech: ["HTML5", "CSS3", "JavaScript"],
         github: "https://github.com/SmokyOP743/Portfolio-Website",
-        demo: null, // Set to your live site URL when deployed, or keep null
+        demo: "https://jayam743.github.io/Portfolio-Website/",
         icon: "./assets/Portfolio.png",
         featured: true,
     },
     {
-        id: 2,
+        id: 3,
+        name: "Luxeciaga Website",
+        description: "Responsive business website built during internship at Luxeciaga with dynamic content management.",
+        tech: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+        github: null,
+        demo: "https://luxeciaga.com/",
+        icon: "./assets/Luxeciaga.png",
+        featured: true,
+    },
+    {
+        id: 4,
         name: "PyPhone",
         description: "Python-based application with 6 apps: Camera, Snake, Pong, Gallery, Browser, and bubble sort Visualizer. Built during SOARCS with a group.",
         tech: ["Python", "CustomTkinter", "GUI", "Web Camera", "Pygame"],
@@ -20,7 +40,7 @@ const projects = [{
         featured: true
     },
     {
-        id: 3,
+        id: 5,
         name: "Snake Game",
         description: "Classic snake game recreation with modern features and smooth gameplay.",
         tech: ["Python", "Pygame"],
@@ -29,16 +49,7 @@ const projects = [{
         icon: "./assets/Snake.png",
         featured: true
     },
-    {
-        id: 4,
-        name: "Luxeciaga Website",
-        description: "Responsive business website built during internship at Luxeciaga with dynamic content management.",
-        tech: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-        github: null,
-        demo: "https://luxeciaga.com/",
-        icon: "./assets/Luxeciaga.png",
-        featured: true,
-    }
+    
 ];
 
 // Get only featured projects for 3D carousel
