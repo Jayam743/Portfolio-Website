@@ -4,7 +4,7 @@ const projects = [{
     name: "Smart UML Degree Pathway",
     description: "Full-stack academic planning platform that parses UMass Lowell transcripts via a Python PDF pipeline, maps degree progress, and delivers AI-powered course recommendations and schedule generation.",
     tech: ["Python", "Next.js", "PostgreSQL", "Flask", "NLP", "REST APIs"],
-    github: "https://github.com/SmokyOP743/smart-degree-pathway", 
+    github: null, 
     demo: "https://smart-degree-pathway.vercel.app",
     icon: "./assets/SMART_UML.png", 
     featured: true,
