@@ -14,7 +14,7 @@ const projects = [{
         name: "Portfolio Website",
         description: "Personal portfolio built with vanilla HTML, CSS, and JavaScript. Features 3D project carousel, responsive design, and custom animations.",
         tech: ["HTML5", "CSS3", "JavaScript"],
-        github: "https://github.com/SmokyOP743/Portfolio-Website",
+        github: "https://github.com/Jayam743/Portfolio-Website",
         demo: "https://jayam743.github.io/Portfolio-Website/",
         icon: "./assets/Portfolio.png",
         featured: true,
@@ -34,7 +34,7 @@ const projects = [{
         name: "PyPhone",
         description: "Python-based application with 6 apps: Camera, Snake, Pong, Gallery, Browser, and bubble sort Visualizer. Built during SOARCS with a group.",
         tech: ["Python", "CustomTkinter", "GUI", "Web Camera", "Pygame"],
-        github: "https://github.com/SmokyOP743/SoarCS",
+        github: "https://github.com/Jayam743/SoarCS",
         demo: "https://youtu.be/w59tqD9euUc?si=cPcVZcf_Te2i2tg7",
         icon: "./assets/Pyphone.png",
         featured: true
@@ -44,7 +44,7 @@ const projects = [{
         name: "Snake Game",
         description: "Classic snake game recreation with modern features and smooth gameplay.",
         tech: ["Python", "Pygame"],
-        github: "https://github.com/SmokyOP743/Simple-Python-Projects",
+        github: "https://github.com/Jayam743/Simple-Python-Projects",
         demo: null,
         icon: "./assets/Snake.png",
         featured: true
