@@ -37,7 +37,7 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggle}
-      className="inline-flex items-center gap-2 rounded-sm border border-border px-3 py-1.5 font-mono text-mono text-text-secondary transition-colors duration-(--dur-base) ease-(--ease-standard) hover:border-signal hover:text-text-primary"
+      className="inline-flex min-h-11 items-center gap-2 rounded-sm border border-border px-3 py-1.5 font-mono text-mono text-text-secondary transition-colors duration-(--dur-base) ease-(--ease-standard) hover:border-signal hover:text-text-primary"
       aria-label={isDark ? "Switch to Paper (light) mode" : "Switch to Ink (dark) mode"}
       title={isDark ? "Switch to Paper (light)" : "Switch to Ink (dark)"}
     >

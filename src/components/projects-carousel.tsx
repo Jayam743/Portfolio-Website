@@ -17,6 +17,7 @@ import { SPRING } from "@/lib/motion";
 
 const SWIPE_OFFSET_FRACTION = 0.28; // fraction of step needed to commit a swipe
 const SWIPE_VELOCITY_THRESHOLD = 480; // px/s — a flick commits regardless of distance
+const AUTO_ADVANCE_MS = 4500; // gentle rotation while idle, paused/disabled per guardrails below
 
 function clamp(n: number, min: number, max: number) {
   return Math.min(max, Math.max(min, n));
@@ -25,10 +26,10 @@ function clamp(n: number, min: number, max: number) {
 function ProjectCardBody({ project, interactive }: { project: Project; interactive: boolean }) {
   return (
     <article
-      className="flex h-full flex-col gap-3 rounded-lg border bg-bg-elevated p-5 transition-colors duration-(--dur-base) ease-(--ease-standard) sm:p-6"
+      className="flex h-full flex-col gap-3 overflow-hidden rounded-lg border bg-bg-elevated p-5 transition-colors duration-(--dur-base) ease-(--ease-standard) sm:p-6"
       style={{ borderColor: interactive ? "var(--signal)" : "var(--border-hairline)" }}
     >
-      <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-border">
+      <div className="relative aspect-[4/3] shrink-0 overflow-hidden rounded-md border border-border">
         <Image
           src={project.image.src}
           alt={`${project.name} screenshot`}
@@ -39,8 +40,10 @@ function ProjectCardBody({ project, interactive }: { project: Project; interacti
         />
       </div>
       <h3 className="text-h4 font-display text-text-primary">{project.name}</h3>
-      <p className="text-sm text-text-secondary">{project.blurb}</p>
-      <p className="font-mono text-caption text-text-muted">{project.stack.join(" · ")}</p>
+      <p className="line-clamp-3 text-sm text-text-secondary">{project.blurb}</p>
+      <p className="line-clamp-1 font-mono text-caption text-text-muted">
+        {project.stack.join(" · ")}
+      </p>
       <div className="mt-auto flex flex-wrap gap-4 pt-1">
         {project.href && (
           <a
@@ -76,6 +79,13 @@ export function ProjectsCarousel({ projects }: { projects: Project[] }) {
   const [index, setIndex] = useState(0);
   const [dragPx, setDragPx] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  // Auto-advance: gentle rotation while idle. `autoplay` latches to false
+  // permanently on any manual navigation (drag/arrow/keyboard); `paused` is
+  // the temporary hover/focus-within pause and un-pauses on its own.
+  const [autoplay, setAutoplay] = useState(true);
+  const [hovering, setHovering] = useState(false);
+  const [focusWithin, setFocusWithin] = useState(false);
+  const paused = hovering || focusWithin;
 
   useEffect(() => {
     const el = stageRef.current;
@@ -87,13 +97,25 @@ export function ProjectsCarousel({ projects }: { projects: Project[] }) {
     return () => ro.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (reduced || !autoplay || paused || projects.length < 2) return;
+    const id = window.setTimeout(() => {
+      setIndex((i) => (i + 1) % projects.length);
+    }, AUTO_ADVANCE_MS);
+    return () => window.clearTimeout(id);
+  }, [index, reduced, autoplay, paused, projects.length]);
+
   const goTo = useCallback(
-    (next: number) => setIndex(clamp(next, 0, projects.length - 1)),
+    (next: number) => {
+      setAutoplay(false); // any manual arrow/keyboard/drag nav stops auto-advance for good
+      setIndex(clamp(next, 0, projects.length - 1));
+    },
     [projects.length],
   );
 
   function handleDragStart() {
     setIsDragging(true);
+    setAutoplay(false);
   }
   function handleDrag(_: unknown, info: PanInfo) {
     setDragPx(info.offset.x);
@@ -105,6 +127,15 @@ export function ProjectsCarousel({ projects }: { projects: Project[] }) {
     const passedVelocity = Math.abs(info.velocity.x) > SWIPE_VELOCITY_THRESHOLD;
     if (passedOffset || passedVelocity) {
       goTo(index + (info.offset.x < 0 ? 1 : -1));
+    }
+  }
+
+  function handleFocus() {
+    setFocusWithin(true);
+  }
+  function handleBlur(event: React.FocusEvent<HTMLDivElement>) {
+    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+      setFocusWithin(false);
     }
   }
 
@@ -125,7 +156,7 @@ export function ProjectsCarousel({ projects }: { projects: Project[] }) {
   }
 
   return (
-    <div>
+    <div onPointerEnter={() => setHovering(true)} onPointerLeave={() => setHovering(false)}>
       <div
         ref={stageRef}
         role="region"
@@ -133,7 +164,13 @@ export function ProjectsCarousel({ projects }: { projects: Project[] }) {
         aria-label="Projects"
         tabIndex={0}
         onKeyDown={handleKeyDown}
-        className="relative h-[440px] outline-none sm:h-[480px]"
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        // Fixed, constant height regardless of active index (never grows/
+        // shrinks between slides) + overflow-hidden so off-stage coverflow
+        // cards never bleed into the page's scrollable area (no CLS, no
+        // stray horizontal/vertical page scroll from slide to slide).
+        className="relative h-[520px] overflow-hidden outline-none"
         style={{ perspective: 1400 }}
       >
         <p aria-live="polite" className="sr-only">
@@ -168,7 +205,7 @@ export function ProjectsCarousel({ projects }: { projects: Project[] }) {
             return (
               <div
                 key={project.id}
-                className="absolute inset-0 flex items-center justify-center"
+                className="absolute inset-0 flex items-stretch justify-center"
                 style={{
                   zIndex,
                   pointerEvents: interactive ? "auto" : "none",
@@ -182,7 +219,7 @@ export function ProjectsCarousel({ projects }: { projects: Project[] }) {
                 <motion.div
                   animate={{ x, rotateY, scale, opacity, z }}
                   transition={reduced || isDragging ? { duration: 0 } : SPRING}
-                  className="w-[min(78vw,340px)]"
+                  className="h-full w-[min(78vw,340px)]"
                 >
                   <ProjectCardBody project={project} interactive={interactive} />
                 </motion.div>
@@ -198,7 +235,7 @@ export function ProjectsCarousel({ projects }: { projects: Project[] }) {
           onClick={() => goTo(index - 1)}
           disabled={index === 0}
           aria-label="Previous project"
-          className="rounded-md border border-border p-2.5 text-text-secondary transition-colors duration-(--dur-base) ease-(--ease-standard) hover:border-signal hover:text-signal disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-border disabled:hover:text-text-secondary"
+          className="flex min-h-11 min-w-11 items-center justify-center rounded-md border border-border p-2.5 text-text-secondary transition-colors duration-(--dur-base) ease-(--ease-standard) hover:border-signal hover:text-signal disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-border disabled:hover:text-text-secondary"
         >
           <span aria-hidden="true">‹</span>
         </button>
@@ -210,7 +247,7 @@ export function ProjectsCarousel({ projects }: { projects: Project[] }) {
           onClick={() => goTo(index + 1)}
           disabled={index === projects.length - 1}
           aria-label="Next project"
-          className="rounded-md border border-border p-2.5 text-text-secondary transition-colors duration-(--dur-base) ease-(--ease-standard) hover:border-signal hover:text-signal disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-border disabled:hover:text-text-secondary"
+          className="flex min-h-11 min-w-11 items-center justify-center rounded-md border border-border p-2.5 text-text-secondary transition-colors duration-(--dur-base) ease-(--ease-standard) hover:border-signal hover:text-signal disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-border disabled:hover:text-text-secondary"
         >
           <span aria-hidden="true">›</span>
         </button>

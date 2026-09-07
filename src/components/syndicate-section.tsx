@@ -72,7 +72,7 @@ export function SyndicateSection() {
                       onMouseEnter={() => setSelected(i)}
                       onFocus={() => setSelected(i)}
                       onClick={() => setSelected(i)}
-                      className="rounded-md border px-3 py-2 font-mono text-mono transition-colors duration-(--dur-fast) ease-(--ease-standard)"
+                      className="min-h-11 rounded-md border px-3 py-2 font-mono text-mono transition-colors duration-(--dur-fast) ease-(--ease-standard)"
                       style={{
                         borderColor: isActive ? "var(--signal)" : "var(--border-strong)",
                         color: isActive ? "var(--signal)" : "var(--text-secondary)",

@@ -262,6 +262,24 @@ body {
   }
 }
 
+/* DESIGN.md §5 "Universal responsiveness": step the container up on large
+   desktops/TVs so content doesn't marooned as a tiny column — it scales
+   *with* the viewport instead of staying pinned at the 1240px reading width. */
+@media (min-width: 1920px) {
+  .container-grid {
+    max-width: 1440px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .container-grid {
+    max-width: 1680px;
+  }
+  html {
+    font-size: 17px;
+  }
+}
+
 /* Sparse mono coordinate/system-identifier label — used in section gutters,
    instrument-panel title bars, and spec-row fields. Never a decorative
    eyebrow: content-motivated only (DESIGN.md §1 "Mono is content-motivated,

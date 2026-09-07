@@ -110,7 +110,7 @@ export function PipelineDiagram() {
           <button
             type="button"
             onClick={() => setRunId((n) => n + 1)}
-            className="font-mono text-mono text-text-muted transition-colors duration-(--dur-fast) hover:text-signal focus-visible:text-signal"
+            className="-m-3 inline-flex min-h-11 items-center p-3 font-mono text-mono text-text-muted transition-colors duration-(--dur-fast) hover:text-signal focus-visible:text-signal"
           >
             ↺ replay
           </button>
