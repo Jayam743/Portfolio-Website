@@ -3,8 +3,9 @@ import { siteConfig } from "@/lib/site-config";
 
 export function Hero() {
   return (
-    <section id="top" className="border-b border-border py-16 sm:py-24">
-      <div className="container-grid grid grid-cols-1 items-center gap-10 sm:grid-cols-12 sm:gap-8">
+    <section id="top" className="relative overflow-hidden border-b border-border py-16 sm:py-24">
+      <div aria-hidden="true" className="instrument-grid pointer-events-none absolute inset-0" />
+      <div className="container-grid relative z-10 grid grid-cols-1 items-center gap-10 sm:grid-cols-12 sm:gap-8">
         <div className="hero-reveal sm:col-span-6">
           <h1
             className="text-display font-display text-text-primary"

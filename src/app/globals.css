@@ -313,3 +313,14 @@ body {
     animation: none;
   }
 }
+
+/* Instrument console texture — a faint grid, masked to fade out. Depth, not decoration. */
+.instrument-grid {
+  background-image:
+    linear-gradient(to right, var(--border-hairline) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-hairline) 1px, transparent 1px);
+  background-size: 56px 56px;
+  opacity: 0.35;
+  -webkit-mask-image: radial-gradient(ellipse 85% 65% at 60% 15%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(ellipse 85% 65% at 60% 15%, #000 0%, transparent 72%);
+}
