@@ -269,6 +269,44 @@ body {
   text-transform: uppercase;
 }
 
+/* Tame Fraunces — moderate optical size, no wonk/soft-axis drama, so the
+   "J" (and every other glyph) reads clean at display sizes. */
+.font-display {
+  font-variation-settings:
+    "opsz" 40,
+    "SOFT" 0,
+    "WONK" 0;
+}
+
+/* Hero rotating-role typewriter caret. */
+.typewriter-caret {
+  display: inline-block;
+  width: 2px;
+  height: 0.9em;
+  margin-left: 2px;
+  vertical-align: -0.1em;
+  background: var(--signal);
+  animation: caret-blink 1s step-end infinite;
+}
+
+@keyframes caret-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typewriter-caret {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

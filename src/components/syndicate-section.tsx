@@ -1,13 +1,16 @@
 "use client";
 
-// Syndicate centerpiece. De-walled: the long prose is cut to a tight lead + a
-// pull-quote (the "vibe coding" line as a visual moment), and the roster is
-// interactive — hover/focus a name to read its role. The step sequence lives
-// in the animated hero pipeline now, so it's not repeated here.
+// Syndicate deep-dive — demoted per docs/CONTENT.md: optional depth for
+// engineers who want to dig in, not the hero's job anymore. The animated
+// pipeline (previously in the hero) now lives here, introduced in plain
+// English first so anyone gets it in one line. The former standalone
+// pull-quote is folded into that intro instead of floating on its own. The
+// roster stays interactive — hover/focus a name to read its role.
 // FIRST-DRAFT COPY — verify per-agent rationale against Jayam's wording.
 
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { PipelineDiagram } from "@/components/pipeline-diagram";
 import { Reveal } from "@/components/reveal";
 
 const roster = [
@@ -37,24 +40,20 @@ export function SyndicateSection() {
 
         <div className="lg:col-span-10">
           <Reveal>
-            <h2 className="max-w-[18ch] text-h1 font-display text-text-primary" style={{ fontWeight: 440 }}>
-              A governed system, not a single model improvising
+            <h2 className="max-w-[22ch] text-h1 font-display text-text-primary" style={{ fontWeight: 440 }}>
+              The deep-dive: how Syndicate works
             </h2>
             <p className="mt-6 max-w-[62ch] text-body-lg text-text-secondary">
-              I built the original Syndicate at work to run real production changes through a
-              multi-agent pipeline instead of one model doing everything at once. This site runs a
-              lean adaptation of it. The architecture, the routing, and every agent here are mine.
+              At Analogic I built the runtime that drives our internal AI agents safely — here&apos;s
+              how a task flows through it. Prompting a model and governing a system of them
+              aren&apos;t the same job; this site runs a lean adaptation of the same architecture,
+              routing, and agents.
             </p>
           </Reveal>
 
-          {/* pull-quote — the thesis, as an indented block, no colored bar */}
-          <blockquote
-            className="mt-12 max-w-[30ch] border-t border-border pl-0 pt-8 text-[clamp(1.875rem,3vw,2.75rem)] leading-[1.15] font-display text-text-primary sm:max-w-[38ch] sm:pl-10 lg:pl-16"
-            style={{ fontWeight: 440 }}
-          >
-            Prompting a model and governing a system of them are not the same job. One of those is
-            vibe coding — the other is engineering, with more opinions in the room.
-          </blockquote>
+          <div className="mt-12">
+            <PipelineDiagram />
+          </div>
 
           {/* interactive roster */}
           <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-12">

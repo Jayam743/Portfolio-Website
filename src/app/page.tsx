@@ -1,11 +1,11 @@
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
-import { SyndicateSection } from "@/components/syndicate-section";
+import { ExperienceSection } from "@/components/experience-section";
 import { ProjectsSection } from "@/components/projects-section";
-import { AboutSection } from "@/components/about-section";
+import { SyndicateSection } from "@/components/syndicate-section";
+import { TechStackSection } from "@/components/tech-stack-section";
 import { ContactSection } from "@/components/contact-section";
-import { GuestbookSection } from "@/components/guestbook-section";
 
 export default function Home() {
   return (
@@ -13,11 +13,11 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <SyndicateSection />
+        <ExperienceSection />
         <ProjectsSection />
-        <AboutSection />
+        <SyndicateSection />
+        <TechStackSection />
         <ContactSection />
-        <GuestbookSection />
       </main>
       <Footer />
     </>

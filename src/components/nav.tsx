@@ -2,9 +2,10 @@ import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 const sections = [
-  { href: "#syndicate", label: "Syndicate" },
+  { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
-  { href: "#about", label: "About" },
+  { href: "#syndicate", label: "Syndicate" },
+  { href: "#stack", label: "Stack" },
   { href: "#contact", label: "Contact" },
 ];
 
