@@ -39,60 +39,63 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="border-b border-border py-16 sm:py-24">
-      <div className="container-grid grid grid-cols-1 gap-10 sm:grid-cols-12 sm:gap-6">
-        {/* sparse gutter coordinate label — second of two anchor spots */}
-        <div className="hidden lg:col-span-1 lg:block lg:pt-2">
-          <p className="coord-label flex items-center gap-1.5 text-text-muted">
-            <span
-              aria-hidden="true"
-              className="status-dot-live inline-block size-1.5 rounded-full"
-              style={{ background: "var(--signal)" }}
-            />
-            Open
-          </p>
-        </div>
-
-        <div className="sm:col-span-5 lg:col-span-4 lg:col-start-2">
-          <Reveal>
-            <h2 className="text-h2 font-display text-text-primary" style={{ fontWeight: 440 }}>
-              Reach out
-            </h2>
-            <p className="mt-4 max-w-[42ch] text-body text-text-secondary">
-              The fastest path is the form. Or email directly at{" "}
-              <a
-                href={`mailto:${siteConfig.email}`}
-                className="text-signal underline underline-offset-4"
-              >
-                {siteConfig.email}
-              </a>
-              .
+      <div className="container-grid grid grid-cols-1 gap-10 sm:grid-cols-12 sm:items-center sm:gap-6">
+        <div className="sm:col-span-5">
+          <div className="lg:flex lg:items-start lg:gap-6">
+            {/* sparse gutter coordinate label — second of two anchor spots;
+                top-aligned flush-left against the heading, not centered */}
+            <p className="coord-label mb-3 flex items-center gap-1.5 text-text-muted lg:mb-0 lg:shrink-0">
+              <span
+                aria-hidden="true"
+                className="status-dot-live inline-block size-1.5 rounded-full"
+                style={{ background: "var(--signal)" }}
+              />
+              Open
             </p>
-          </Reveal>
 
-          <div className="mt-8">
-            <p className="coord-label text-text-muted">Channels</p>
-            <div className="mt-3 flex flex-col gap-2 text-sm">
-              <a
-                href={siteConfig.githubProfile}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-text-secondary underline-offset-4 transition-colors duration-(--dur-base) hover:text-signal hover:underline"
-              >
-                GitHub
-              </a>
-              <a
-                href={siteConfig.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-text-secondary underline-offset-4 transition-colors duration-(--dur-base) hover:text-signal hover:underline"
-              >
-                LinkedIn
-              </a>
+            <div className="lg:flex-1">
+              <Reveal>
+                <h2 className="text-h2 font-display text-text-primary" style={{ fontWeight: 440 }}>
+                  Reach out
+                </h2>
+                <p className="mt-4 max-w-[42ch] text-body text-text-secondary">
+                  The fastest path is the form. Or email directly at{" "}
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="text-signal underline underline-offset-4"
+                  >
+                    {siteConfig.email}
+                  </a>
+                  .
+                </p>
+              </Reveal>
+
+              <div className="mt-8">
+                <p className="coord-label text-text-muted">Channels</p>
+                <div className="mt-3 flex flex-col gap-2 text-sm">
+                  <a
+                    href={siteConfig.githubProfile}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-text-secondary underline-offset-4 transition-colors duration-(--dur-base) hover:text-signal hover:underline"
+                  >
+                    GitHub
+                  </a>
+                  <a
+                    href={siteConfig.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-text-secondary underline-offset-4 transition-colors duration-(--dur-base) hover:text-signal hover:underline"
+                  >
+                    LinkedIn
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-10 sm:col-span-7 sm:mt-0 lg:col-span-7">
+        <div className="mt-10 sm:col-span-7 sm:mt-0">
           <form
             noValidate
             onSubmit={handleSubmit}

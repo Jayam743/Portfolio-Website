@@ -30,15 +30,14 @@ export function SyndicateSection() {
 
   return (
     <section id="syndicate" className="border-b border-border bg-bg-raised py-16 sm:py-24">
-      <div className="container-grid lg:grid lg:grid-cols-12 lg:gap-6">
-        {/* sparse gutter coordinate label — one of two anchor spots site-wide */}
-        <div className="hidden lg:col-span-2 lg:block lg:pt-2">
-          <p className="coord-label text-text-muted">
-            Agents<span className="text-signal"> · 07</span>
-          </p>
-        </div>
+      <div className="container-grid lg:flex lg:items-start lg:gap-6">
+        {/* sparse gutter coordinate label — one of two anchor spots site-wide;
+            top-aligned flush-left against the heading, not centered */}
+        <p className="coord-label mb-3 text-text-muted lg:mb-0 lg:shrink-0">
+          Agents<span className="text-signal"> · 07</span>
+        </p>
 
-        <div className="lg:col-span-10">
+        <div className="lg:flex-1">
           <Reveal>
             <h2 className="max-w-[22ch] text-h1 font-display text-text-primary" style={{ fontWeight: 440 }}>
               The deep-dive: how Syndicate works

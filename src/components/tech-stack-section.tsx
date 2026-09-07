@@ -11,11 +11,13 @@ export function TechStackSection() {
           </h2>
         </Reveal>
 
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {techStack.map((category) => (
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
+          {techStack.map((category, i) => (
             <div
               key={category.id}
-              className="rounded-lg border border-border bg-bg-elevated p-5"
+              className={`rounded-lg border border-border bg-bg-elevated p-5 ${
+                i === techStack.length - 1 ? "sm:col-span-2" : ""
+              } ${i < 3 ? "lg:col-span-2" : "lg:col-span-3"}`}
             >
               <p className="coord-label text-signal">{category.label}</p>
               <ul className="mt-3 flex flex-wrap gap-2">

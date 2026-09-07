@@ -269,6 +269,7 @@ body {
 .coord-label {
   font-family: var(--font-mono);
   font-size: var(--fs-mono);
+  line-height: 1;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
