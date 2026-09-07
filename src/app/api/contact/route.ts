@@ -57,7 +57,13 @@ function validate(payload: ContactPayload) {
 }
 
 async function verifyTurnstile(token: string, ip: string | null) {
-  const secret = process.env.TURNSTILE_SECRET_KEY ?? TURNSTILE_SECRET_FALLBACK;
+  // Fail CLOSED in production: only use the always-pass test secret in local
+  // dev. If the real secret is missing in prod, refuse to validate (so the
+  // form never silently degrades to bot-open) rather than falling back.
+  const secret =
+    process.env.TURNSTILE_SECRET_KEY ??
+    (process.env.NODE_ENV === "production" ? undefined : TURNSTILE_SECRET_FALLBACK);
+  if (!secret) return false;
 
   const body = new URLSearchParams();
   body.set("secret", secret);
