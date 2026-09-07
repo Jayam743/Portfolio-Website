@@ -4,8 +4,8 @@ import { siteConfig } from "@/lib/site-config";
 export function Hero() {
   return (
     <section id="top" className="border-b border-border py-16 sm:py-24">
-      <div className="container-grid grid grid-cols-1 gap-10 sm:grid-cols-12 sm:gap-6">
-        <div className="hero-reveal sm:col-span-7">
+      <div className="container-grid grid grid-cols-1 items-center gap-10 sm:grid-cols-12 sm:gap-8">
+        <div className="hero-reveal sm:col-span-6">
           <h1
             className="text-display font-display text-text-primary"
             style={{ fontWeight: 440 }}
@@ -41,15 +41,8 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="hero-reveal hero-reveal-delay-2 sm:col-span-5">
-          <p className="mb-3 font-mono text-mono text-text-muted">
-            live pipeline — preview
-          </p>
+        <div className="hero-reveal hero-reveal-delay-2 sm:col-span-6">
           <PipelineDiagram />
-          <p className="mt-3 text-caption text-text-muted">
-            The operable version — trigger a real task and scrub the route —
-            ships in a later pass. This is the static shape of it.
-          </p>
         </div>
       </div>
     </section>

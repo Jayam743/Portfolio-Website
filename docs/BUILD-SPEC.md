@@ -115,5 +115,12 @@ Confident, not arrogant. Technically credible (precise nouns used correctly). Hu
 - **Perf budget:** §3 targets; mobile-first; graceful degradation of the signature moment.
 - **Verification loop:** Playwright drives the built site to confirm render + both dynamic features + success criteria; iterate until green.
 
+## 10. Production checklist (triaged for a personal portfolio, 2026-09-06)
+**Build these (🎯):** custom 404 · CTA above the fold · per-route meta title + description · canonical tags · Open Graph image (LinkedIn share card — high priority) · favicon set (monogram/glyph) · robots.txt + sitemap.xml · alt text on every image · full mobile→4K breakpoints (§5) · sticky mobile CTA (subtle, not clutter) · loading states (dynamic features) · form error states (one generic text) · thank-you state after contact submit · Turnstile captcha on both forms · JSON-LD structured data (Person + SoftwareApplication for Syndicate) · explicit image width/height (next/image, no CLS) · security headers (CSP, HSTS, X-Frame-Options, Referrer-Policy, Permissions-Policy) · **cookieless analytics (Cloudflare Web Analytics — no cookie banner needed)** · **hard hosting spend cap** (free tiers only, no card where possible, billing alerts — enforce the free-only constraint).
+
+**Conditional — YES because the site collects data (🤔):** lightweight **privacy policy** (contact form + guestbook collect email/GitHub identity; short + honest, not legalese). **Cookie banner: NO** — cookieless analytics + essential-only auth cookies means no consent banner required (avoided by design).
+
+**Skip — not applicable to a personal portfolio (❌):** terms of service (no transaction) · real physical contact address (privacy/safety — email + form only) · consistent business NAP (name/address/phone — that's local-business SEO, irrelevant).
+
 ---
 *Downstream: Muse (done) → design system → `DESIGN.md` (§7/§8 resolve skill clash) → build (locked stack) → Playwright vs §3 → Athena + Loki → Hermes deploy. §5 security musts are non-negotiable acceptance gates.*
