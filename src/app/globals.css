@@ -1,23 +1,315 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   DESIGN TOKENS — source of truth: docs/DESIGN.md
+   Raw palette + type-scale + spacing/motion vars live at :root (theme-scoped
+   where the value differs between Ink/Paper). A semantic layer aliases the
+   raw tokens to theme-agnostic names (--bg, --text-primary, --signal, ...)
+   so components + the Tailwind theme never branch on light/dark themselves —
+   the cascade does it via [data-theme].
+   ========================================================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ---- Paper (light) palette — DEFAULT ---- */
+  --paper-100: #f3f6fa; /* base background — cool white */
+  --paper-000: #ffffff; /* raised surface */
+  --paper-200: #e9eef4; /* subtle fill */
+  --border: #d5dde7; /* hairline */
+  --text-900: #131a24; /* primary ink */
+  --text-700: #3e4a59; /* secondary */
+  --text-500: #647283; /* muted */
+  --signal: #b9772a; /* amber, darkened for AA contrast on paper */
+  --signal-tint: rgba(185, 119, 42, 0.1);
+  --error: #c0492f;
+  --ok: #3f8f6e; /* not specified for light in DESIGN.md — darkened for AA on paper */
+  --focus-ring: #b9772a;
+
+  /* ---- Type scale (shared both themes) ---- */
+  --fs-display: clamp(3.25rem, 7.5vw, 6.5rem);
+  --fs-h1: clamp(2.25rem, 4vw, 3.25rem);
+  --fs-h2: clamp(1.75rem, 2.6vw, 2.25rem);
+  --fs-h3: 1.5rem;
+  --fs-h4: 1.25rem;
+  --fs-body-lg: 1.125rem;
+  --fs-body: 1rem;
+  --fs-sm: 0.9375rem;
+  --fs-caption: 0.8125rem;
+  --fs-mono: 0.75rem;
+
+  /* ---- Spacing — 8pt grid ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* ---- Motion — instrument motion, damped, no bounce ---- */
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 320ms;
+  --dur-slower: 520ms;
+  --ease-settle: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---- Semantic aliases — Paper (light) values ---- */
+  --bg: var(--paper-100);
+  --bg-raised: var(--paper-000);
+  --bg-elevated: var(--paper-000);
+  --border-hairline: var(--border);
+  --border-strong: var(--border);
+  --text-primary: var(--text-900);
+  --text-secondary: var(--text-700);
+  --text-muted: var(--text-500);
+  /* Light mode has no separate hover/press signal values in DESIGN.md;
+     reuse --signal and lean on opacity/tint for hover states instead. */
+  --signal-strong: var(--signal);
+  --signal-deep: var(--signal);
+  /* Fixed dark ink for text/icons placed on top of the (always warm/light-ish)
+     --signal fill — needed for AA contrast regardless of theme. */
+  --on-signal: #0f1620;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+:root[data-theme="dark"] {
+  /* ---- Ink (dark) palette ---- */
+  --ink-900: #0f1620; /* base background — cool slate, blue undertone */
+  --ink-800: #141d29; /* raised surface */
+  --ink-700: #1a2432; /* card / elevated */
+  --ink-600: #26313f; /* hairline border (default) */
+  --ink-500: #33404f; /* stronger border / divider */
+  --text-100: #e9eef5; /* primary text — cool off-white */
+  --text-300: #b4c0ce; /* secondary */
+  --text-500: #7c8a9b; /* muted / captions (overrides light's --text-500) */
+  --signal: #e3a24a; /* THE accent — matured sandstone -> amber */
+  --signal-strong: #f2b865; /* hover / active */
+  --signal-deep: #c6852f; /* pressed */
+  --signal-tint: rgba(227, 162, 74, 0.12);
+  --focus-ring: #f2b865;
+  --error: #d9694e;
+  --ok: #6fb79a;
+
+  --bg: var(--ink-900);
+  --bg-raised: var(--ink-800);
+  --bg-elevated: var(--ink-700);
+  --border-hairline: var(--ink-600);
+  --border-strong: var(--ink-500);
+  --text-primary: var(--text-100);
+  --text-secondary: var(--text-300);
+  --text-muted: var(--text-500);
 }
 
+/* No-JS / pre-hydration fallback: the inline script in <head> sets
+   [data-theme] before paint, so this only matters when JS is unavailable. */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme]) {
+    --ink-900: #0f1620;
+    --ink-800: #141d29;
+    --ink-700: #1a2432;
+    --ink-600: #26313f;
+    --ink-500: #33404f;
+    --text-100: #e9eef5;
+    --text-300: #b4c0ce;
+    --text-500: #7c8a9b;
+    --signal: #e3a24a;
+    --signal-strong: #f2b865;
+    --signal-deep: #c6852f;
+    --signal-tint: rgba(227, 162, 74, 0.12);
+    --focus-ring: #f2b865;
+    --error: #d9694e;
+    --ok: #6fb79a;
+
+    --bg: var(--ink-900);
+    --bg-raised: var(--ink-800);
+    --bg-elevated: var(--ink-700);
+    --border-hairline: var(--ink-600);
+    --border-strong: var(--ink-500);
+    --text-primary: var(--text-100);
+    --text-secondary: var(--text-300);
+    --text-muted: var(--text-500);
   }
 }
 
+/* ==========================================================================
+   TAILWIND THEME — maps semantic + type/font tokens onto Tailwind v4
+   utility namespaces. `inline` keeps every value a live var() reference
+   (resolved at runtime by the cascade / [data-theme]), instead of Tailwind
+   flattening it to whatever value is statically visible at build time.
+   ========================================================================== */
+@theme inline {
+  /* Fonts — next/font sets the -nf vars via a className on <html>; we
+     re-expose them under the public names DESIGN.md specifies. */
+  --font-display: var(--font-display-nf);
+  --font-sans: var(--font-sans-nf);
+  --font-mono: var(--font-mono-nf);
+
+  /* Color */
+  --color-bg: var(--bg);
+  --color-bg-raised: var(--bg-raised);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-border: var(--border-hairline);
+  --color-border-strong: var(--border-strong);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-signal: var(--signal);
+  --color-signal-strong: var(--signal-strong);
+  --color-signal-deep: var(--signal-deep);
+  --color-signal-tint: var(--signal-tint);
+  --color-focus-ring: var(--focus-ring);
+  --color-error: var(--error);
+  --color-ok: var(--ok);
+  --color-on-signal: var(--on-signal);
+
+  /* Type scale -> text-display, text-h1, text-body, text-mono, ... */
+  --text-display: var(--fs-display);
+  --text-display--line-height: 1.03;
+  --text-h1: var(--fs-h1);
+  --text-h1--line-height: 1.12;
+  --text-h2: var(--fs-h2);
+  --text-h2--line-height: 1.2;
+  --text-h3: var(--fs-h3);
+  --text-h3--line-height: 1.3;
+  --text-h4: var(--fs-h4);
+  --text-h4--line-height: 1.35;
+  --text-body-lg: var(--fs-body-lg);
+  --text-body-lg--line-height: 1.6;
+  --text-body: var(--fs-body);
+  --text-body--line-height: 1.6;
+  --text-sm: var(--fs-sm);
+  --text-caption: var(--fs-caption);
+  --text-mono: var(--fs-mono);
+  --text-mono--letter-spacing: 0.02em;
+
+  /* Radius — tight/instrument, nothing pill (literal: no theme-conditional
+     value, so no indirection needed here) */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+html {
+  color-scheme: light;
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  transition:
+    background-color var(--dur-base) var(--ease-standard),
+    color var(--dur-base) var(--ease-standard);
+}
+
+::selection {
+  background: var(--signal-tint);
+  color: var(--text-primary);
+}
+
+/* Visible keyboard focus everywhere — never suppressed */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.container-grid {
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+}
+
+@media (min-width: 640px) {
+  .container-grid {
+    padding-inline: var(--space-6);
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* One orchestrated hero reveal — the only non-triggered motion on the page. */
+@keyframes hero-settle {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-reveal {
+  animation: hero-settle var(--dur-slower) var(--ease-settle) both;
+}
+
+.hero-reveal-delay-1 {
+  animation-delay: 60ms;
+}
+.hero-reveal-delay-2 {
+  animation-delay: 120ms;
+}
+.hero-reveal-delay-3 {
+  animation-delay: 180ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hero-reveal,
+  .hero-reveal-delay-1,
+  .hero-reveal-delay-2,
+  .hero-reveal-delay-3 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Live status heartbeat — 2s ease-in-out pulse (real cadence, not decorative) */
+@keyframes status-heartbeat {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.status-dot-live {
+  animation: status-heartbeat 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-dot-live {
+    animation: none;
+  }
 }
