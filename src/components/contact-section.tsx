@@ -1,40 +1,68 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { siteConfig } from "@/lib/site-config";
 import { Reveal } from "@/components/reveal";
 
-type Status = "idle" | "error" | "submitted";
+type Status = "idle" | "submitting" | "error" | "submitted";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Cloudflare's public Turnstile test site key — always renders a
+// pass-through widget. Only used as a local-dev fallback; production sets
+// NEXT_PUBLIC_TURNSTILE_SITE_KEY via Vercel env.
+const TURNSTILE_SITE_KEY_FALLBACK = "1x00000000000000000000AA";
+const turnstileSiteKey =
+  process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? TURNSTILE_SITE_KEY_FALLBACK;
+
+const GENERIC_ERROR = "Something went wrong — please email me directly.";
 
 const fieldClasses =
   "rounded-md border border-border bg-bg-raised px-3 py-2.5 text-body text-text-primary outline-none transition-[border-color,box-shadow] duration-(--dur-base) ease-(--ease-standard) focus:border-signal focus:shadow-[0_0_0_3px_var(--color-signal-tint)]";
 
 export function ContactSection() {
   const [status, setStatus] = useState<Status>("idle");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileRef = useRef<TurnstileInstance>(null);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    // Client-side validation only — the server re-validates once the
-    // route/server action lands (see §5 "service decides", never trust
-    // the client). No network call happens yet.
     const form = event.currentTarget;
     const name = (form.elements.namedItem("name") as HTMLInputElement).value.trim();
     const email = (form.elements.namedItem("email") as HTMLInputElement).value.trim();
     const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value.trim();
 
-    if (!name || !email || !message || !emailPattern.test(email)) {
+    // Client-side validation is UX only — the server re-validates
+    // everything and never trusts this pass.
+    if (!name || !email || !message || !emailPattern.test(email) || !turnstileToken) {
       setStatus("error");
       return;
     }
 
-    // TODO: POST to a Next.js server action / route handler here once the
-    // backend lands (Turnstile verify -> rate limit -> validate -> send).
-    // Deferred per docs/BUILD-SPEC.md §9 — visual + client validation only
-    // in this pass.
-    setStatus("submitted");
+    setStatus("submitting");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message, turnstileToken }),
+      });
+
+      if (!response.ok) {
+        throw new Error("request failed");
+      }
+
+      form.reset();
+      turnstileRef.current?.reset();
+      setTurnstileToken("");
+      setStatus("submitted");
+    } catch {
+      turnstileRef.current?.reset();
+      setTurnstileToken("");
+      setStatus("error");
+    }
   }
 
   return (
@@ -143,22 +171,20 @@ export function ContactSection() {
               />
             </div>
 
-            {/* Turnstile mounts here once bot-gating is wired (deferred). */}
-            <div
-              aria-hidden="true"
-              className="flex h-[65px] w-[300px] max-w-full items-center gap-2 rounded-md border border-dashed border-border bg-bg-raised px-4 text-caption text-text-muted"
-            >
-              <span className="inline-block size-1.5 rounded-full bg-text-muted" />
-              <span className="coord-label">Turnstile · bot check</span>
-            </div>
+            <Turnstile
+              ref={turnstileRef}
+              siteKey={turnstileSiteKey}
+              onSuccess={setTurnstileToken}
+              onExpire={() => setTurnstileToken("")}
+              onError={() => setTurnstileToken("")}
+            />
 
             <div
               role="alert"
               aria-live="polite"
               className="min-h-6 text-sm text-error"
             >
-              {status === "error" &&
-                "Something's missing — check name, email, and message."}
+              {status === "error" && GENERIC_ERROR}
             </div>
 
             {status === "submitted" && (
@@ -167,15 +193,16 @@ export function ContactSection() {
                 className="flex items-center gap-2 rounded-md border border-ok/40 bg-ok/10 px-3 py-2 text-sm text-ok"
               >
                 <span aria-hidden="true" className="inline-block size-1.5 rounded-full bg-ok" />
-                Form looks good — submission isn&apos;t wired up yet.
+                Thanks — your message is on its way.
               </div>
             )}
 
             <button
               type="submit"
-              className="self-start rounded-md bg-signal px-5 py-2.5 font-sans text-body font-medium text-on-signal transition-colors duration-(--dur-base) ease-(--ease-standard) hover:bg-signal-strong active:bg-signal-deep"
+              disabled={status === "submitting"}
+              className="self-start rounded-md bg-signal px-5 py-2.5 font-sans text-body font-medium text-on-signal transition-colors duration-(--dur-base) ease-(--ease-standard) hover:bg-signal-strong active:bg-signal-deep disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Send message
+              {status === "submitting" ? "Sending…" : "Send message"}
             </button>
           </form>
         </div>
