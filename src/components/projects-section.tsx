@@ -1,14 +1,16 @@
 import Image from "next/image";
 import { projectsFoundationTier, projectsSecondTier } from "@/lib/projects";
+import { Reveal } from "@/components/reveal";
 
 export function ProjectsSection() {
   return (
     <section id="projects" className="border-b border-border py-16 sm:py-24">
       <div className="container-grid">
-        <p className="font-mono text-mono text-signal">Projects</p>
-        <h2 className="mt-3 text-h1 font-display text-text-primary" style={{ fontWeight: 440 }}>
-          Outside Syndicate
-        </h2>
+        <Reveal>
+          <h2 className="text-h1 font-display text-text-primary" style={{ fontWeight: 440 }}>
+            Outside Syndicate
+          </h2>
+        </Reveal>
 
         <div className="mt-10 grid grid-cols-1 gap-6">
           {projectsSecondTier.map((project) => (
@@ -73,25 +75,32 @@ export function ProjectsSection() {
           ))}
         </div>
 
-        <div className="mt-12">
-          <p className="font-mono text-mono text-text-muted">foundations</p>
-          <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {projectsFoundationTier.map((project) => (
-              <article
-                key={project.id}
-                className="flex flex-col gap-3 rounded-md border border-border bg-bg-raised p-5 transition-colors duration-(--dur-base) ease-(--ease-standard) hover:border-signal/40"
-              >
-                <div className="overflow-hidden rounded-sm border border-border">
+        {/* Foundations — one instrument panel with a titled header bar and
+            internal dividers, not three repeated SaaS cards. Each entry
+            carries a mono index since this IS a deliberately ordered set. */}
+        <div className="mt-12 overflow-hidden rounded-lg border border-border bg-bg-elevated">
+          <div className="flex items-center justify-between border-b border-border px-5 py-3">
+            <span className="coord-label text-text-muted">Foundations</span>
+            <span className="coord-label text-text-muted">
+              {projectsFoundationTier.length} entries
+            </span>
+          </div>
+          <div className="grid grid-cols-1 divide-y divide-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+            {projectsFoundationTier.map((project, i) => (
+              <article key={project.id} className="group flex flex-col gap-3 p-5 transition-colors duration-(--dur-base) ease-(--ease-standard) hover:bg-signal-tint">
+                <p className="coord-label text-text-muted">
+                  {String(i + 1).padStart(2, "0")} / {String(projectsFoundationTier.length).padStart(2, "0")}
+                </p>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-border">
                   <Image
                     src={project.image.src}
                     alt={`${project.name} screenshot`}
-                    width={project.image.width}
-                    height={project.image.height}
-                    className="h-32 w-full object-cover"
+                    fill
+                    className="object-cover transition-transform duration-(--dur-slow) ease-(--ease-settle) group-hover:scale-105"
                     sizes="(min-width: 640px) 30vw, 90vw"
                   />
                 </div>
-                <h3 className="text-h4 font-display text-text-primary">
+                <h3 className="text-h4 font-display text-text-primary transition-colors duration-(--dur-base) ease-(--ease-standard) group-hover:text-signal">
                   {project.name}
                 </h3>
                 <p className="text-sm text-text-secondary">{project.whyItMattered}</p>

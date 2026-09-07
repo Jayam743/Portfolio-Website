@@ -10,3 +10,8 @@ export const SPRING = {
 } as const;
 
 export const EASE_SETTLE = [0.2, 0.8, 0.2, 1] as const;
+
+// Exponential ease-out — the single restrained on-scroll reveal used for
+// section intros (see <Reveal>). Not applied per-element; one signature
+// entrance reused sparingly at section-intro granularity only.
+export const EASE_EXPO_OUT = [0.16, 1, 0.3, 1] as const;

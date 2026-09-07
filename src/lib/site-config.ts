@@ -14,9 +14,8 @@ export const siteConfig = {
     "I build the systems that run the agents — orchestration and governance, not automation.",
   location: "UMass Lowell",
   email: "jayampatel7473@gmail.com",
-  // Profile-level GitHub (legacy README's stated contact identity).
-  githubProfile: "https://github.com/SmokyOP743",
-  // Project repos live under this handle in the legacy source.
+  // Active/public GitHub — Jayam743 (rebrand: SmokyOP743 was the old handle).
+  githubProfile: "https://github.com/Jayam743",
   githubProjects: "https://github.com/Jayam743",
   linkedin: "https://www.linkedin.com/in/jayam-patel73/",
   resumeHref: "/UML_Jayam_Patel_Resume.pdf",
