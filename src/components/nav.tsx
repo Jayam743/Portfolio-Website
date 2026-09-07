@@ -4,7 +4,6 @@ import { ThemeToggle } from "@/components/theme-toggle";
 const sections = [
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
-  { href: "#syndicate", label: "Syndicate" },
   { href: "#stack", label: "Stack" },
   { href: "#contact", label: "Contact" },
 ];

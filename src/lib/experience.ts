@@ -23,7 +23,7 @@ export const experience: ExperienceEntry[] = [
     current: true,
     bullets: [
       "Designed and deployed a self-hosted VPN gateway (Headscale/Tailscale) with SSO and vault-managed secrets, giving the team private, secure access into the cloud environment.",
-      "Built Syndicate — the AI-agent runtime that safely drives an internal multi-agent system end-to-end, with a just-in-time credential flow that mints and revokes short-lived access automatically.",
+      "Authored the runtime that safely drives an internal multi-agent AI system end-to-end, with a just-in-time credential flow that mints and revokes short-lived access automatically.",
       "Automated cloud infrastructure with 8 Ansible roles and shipped Grafana/Prometheus dashboards tracking LLM spend and system health across the stack.",
     ],
   },
