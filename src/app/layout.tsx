@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { Newsreader, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import { siteConfig, siteUrl } from "@/lib/site-config";
 
@@ -7,11 +7,11 @@ import { siteConfig, siteUrl } from "@/lib/site-config";
 // are deliberately NOT --font-display/-sans/-mono (those public names are
 // exposed via the `@theme inline` mapping in globals.css); using distinct
 // internal names here avoids a self-referential CSS var.
-const fraunces = Fraunces({
+const newsreader = Newsreader({
   subsets: ["latin"],
   variable: "--font-display-nf",
   weight: "variable",
-  axes: ["opsz", "SOFT", "WONK"],
+  axes: ["opsz"],
   display: "swap",
 });
 
@@ -116,7 +116,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${fraunces.variable} ${plexSans.variable} ${plexMono.variable} antialiased`}
+        className={`${newsreader.variable} ${plexSans.variable} ${plexMono.variable} antialiased`}
       >
         {children}
       </body>

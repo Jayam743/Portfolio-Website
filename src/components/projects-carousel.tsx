@@ -5,7 +5,9 @@
 // cards tilt away and dim. Drag/swipe with momentum via velocity+offset
 // thresholds, damped spring settle (no elastic bounce), prev/next arrows,
 // and full keyboard support (arrow keys / Home / End on the region).
-// Reduced-motion + no-JS-drag fallback: a static horizontal scroll-snap row.
+// Under prefers-reduced-motion the same tilted/scaled coverflow layout stays
+// (it still needs to look designed), just static: no drag, and index changes
+// (via arrows/keyboard) jump instantly instead of spring-animating.
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -122,22 +124,6 @@ export function ProjectsCarousel({ projects }: { projects: Project[] }) {
     }
   }
 
-  if (reduced) {
-    return (
-      <div
-        role="list"
-        aria-label="Projects"
-        className="-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 sm:-mx-6 sm:px-6"
-      >
-        {projects.map((project) => (
-          <div key={project.id} role="listitem" className="w-[85%] shrink-0 snap-center sm:w-[380px]">
-            <ProjectCardBody project={project} interactive />
-          </div>
-        ))}
-      </div>
-    );
-  }
-
   return (
     <div>
       <div
@@ -154,18 +140,22 @@ export function ProjectsCarousel({ projects }: { projects: Project[] }) {
           {projects[index].name}, project {index + 1} of {projects.length}
         </p>
         <motion.div
-          className="absolute inset-0 cursor-grab touch-pan-y active:cursor-grabbing"
-          drag="x"
+          className={
+            reduced
+              ? "absolute inset-0"
+              : "absolute inset-0 cursor-grab touch-pan-y active:cursor-grabbing"
+          }
+          drag={reduced ? false : "x"}
           dragElastic={0.1}
           dragConstraints={{ left: 0, right: 0 }}
           dragMomentum={false}
-          onDragStart={handleDragStart}
-          onDrag={handleDrag}
-          onDragEnd={handleDragEnd}
+          onDragStart={reduced ? undefined : handleDragStart}
+          onDrag={reduced ? undefined : handleDrag}
+          onDragEnd={reduced ? undefined : handleDragEnd}
           style={{ transformStyle: "preserve-3d" }}
         >
           {projects.map((project, i) => {
-            const distance = i - index + dragPx / step;
+            const distance = i - index + (reduced ? 0 : dragPx / step);
             const abs = Math.abs(distance);
             const interactive = abs < 0.5;
             const scale = clamp(1 - abs * 0.16, 0.74, 1);
@@ -191,7 +181,7 @@ export function ProjectsCarousel({ projects }: { projects: Project[] }) {
               >
                 <motion.div
                   animate={{ x, rotateY, scale, opacity, z }}
-                  transition={isDragging ? { duration: 0 } : SPRING}
+                  transition={reduced || isDragging ? { duration: 0 } : SPRING}
                   className="w-[min(78vw,340px)]"
                 >
                   <ProjectCardBody project={project} interactive={interactive} />

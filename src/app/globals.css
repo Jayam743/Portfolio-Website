@@ -10,19 +10,19 @@
    ========================================================================== */
 
 :root {
-  /* ---- Paper (light) palette — DEFAULT ---- */
-  --paper-100: #f3f6fa; /* base background — cool white */
+  /* ---- Paper (light) palette — DEFAULT — warm, not cool ---- */
+  --paper-100: #f2efe9; /* base background */
   --paper-000: #ffffff; /* raised surface */
-  --paper-200: #e9eef4; /* subtle fill */
-  --border: #d5dde7; /* hairline */
-  --text-900: #131a24; /* primary ink */
-  --text-700: #3e4a59; /* secondary */
-  --text-500: #647283; /* muted */
-  --signal: #b9772a; /* amber, darkened for AA contrast on paper */
-  --signal-tint: rgba(185, 119, 42, 0.1);
-  --error: #c0492f;
-  --ok: #3f8f6e; /* not specified for light in DESIGN.md — darkened for AA on paper */
-  --focus-ring: #b9772a;
+  --paper-200: #e8e3d9; /* subtle fill */
+  --border: #d9d3c7; /* hairline */
+  --text-900: #1f1c17; /* primary ink */
+  --text-700: #4a463d; /* secondary */
+  --text-500: #706b5f; /* muted — nudged 3% darker than #736e62 for AA (4.42 -> 4.62:1) */
+  --signal: #7a6330; /* dark bronze, AA on cream */
+  --signal-tint: rgba(122, 99, 48, 0.1);
+  --error: #b64a2f;
+  --ok: #5a7446; /* sage — nudged 5% darker than #5f7a4a for AA (4.19 -> 4.55:1) */
+  --focus-ring: #7a6330;
 
   /* ---- Type scale (shared both themes) ---- */
   --fs-display: clamp(3.25rem, 7.5vw, 6rem);
@@ -69,28 +69,31 @@
      reuse --signal and lean on opacity/tint for hover states instead. */
   --signal-strong: var(--signal);
   --signal-deep: var(--signal);
-  /* Fixed dark ink for text/icons placed on top of the (always warm/light-ish)
-     --signal fill — needed for AA contrast regardless of theme. */
-  --on-signal: #0f1620;
+  /* Text placed on top of the --signal fill (button labels, etc.) — needed
+     for AA contrast regardless of theme. */
+  --on-signal: #ffffff;
 }
 
 :root[data-theme="dark"] {
-  /* ---- Ink (dark) palette ---- */
-  --ink-900: #0f1620; /* base background — cool slate, blue undertone */
-  --ink-800: #141d29; /* raised surface */
-  --ink-700: #1a2432; /* card / elevated */
-  --ink-600: #26313f; /* hairline border (default) */
-  --ink-500: #33404f; /* stronger border / divider */
-  --text-100: #e9eef5; /* primary text — cool off-white */
-  --text-300: #b4c0ce; /* secondary */
-  --text-500: #7c8a9b; /* muted / captions (overrides light's --text-500) */
-  --signal: #e3a24a; /* THE accent — matured sandstone -> amber */
-  --signal-strong: #f2b865; /* hover / active */
-  --signal-deep: #c6852f; /* pressed */
-  --signal-tint: rgba(227, 162, 74, 0.12);
-  --focus-ring: #f2b865;
-  --error: #d9694e;
-  --ok: #6fb79a;
+  /* ---- Ink (dark) palette — Jayam's signature warm near-black ---- */
+  --ink-900: #121212; /* base background */
+  --ink-800: #1a1a18; /* raised surface */
+  --ink-700: #242320; /* card / elevated */
+  --ink-600: #34322d; /* hairline border (default) */
+  --ink-500: #47443d; /* stronger border / divider */
+  --text-100: #fafafa; /* primary text */
+  --text-300: #d4cfc4; /* secondary */
+  --text-500: #a39d8f; /* muted / captions (overrides light's --text-500) */
+  --signal: #d6c6a8; /* THE accent — sandstone */
+  --signal-strong: #e6dabf; /* hover / active */
+  --signal-deep: #b8a985; /* pressed */
+  --signal-tint: rgba(214, 198, 168, 0.12);
+  --focus-ring: #d6c6a8;
+  --error: #e08a6a;
+  --ok: #a3a380; /* sage */
+  /* Dark text on the light sandstone --signal fill — override the light
+     on-signal (which is tuned for the dark-bronze light-theme button). */
+  --on-signal: #121212;
 
   --bg: var(--ink-900);
   --bg-raised: var(--ink-800);
@@ -106,21 +109,22 @@
    [data-theme] before paint, so this only matters when JS is unavailable. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
-    --ink-900: #0f1620;
-    --ink-800: #141d29;
-    --ink-700: #1a2432;
-    --ink-600: #26313f;
-    --ink-500: #33404f;
-    --text-100: #e9eef5;
-    --text-300: #b4c0ce;
-    --text-500: #7c8a9b;
-    --signal: #e3a24a;
-    --signal-strong: #f2b865;
-    --signal-deep: #c6852f;
-    --signal-tint: rgba(227, 162, 74, 0.12);
-    --focus-ring: #f2b865;
-    --error: #d9694e;
-    --ok: #6fb79a;
+    --ink-900: #121212;
+    --ink-800: #1a1a18;
+    --ink-700: #242320;
+    --ink-600: #34322d;
+    --ink-500: #47443d;
+    --text-100: #fafafa;
+    --text-300: #d4cfc4;
+    --text-500: #a39d8f;
+    --signal: #d6c6a8;
+    --signal-strong: #e6dabf;
+    --signal-deep: #b8a985;
+    --signal-tint: rgba(214, 198, 168, 0.12);
+    --focus-ring: #d6c6a8;
+    --error: #e08a6a;
+    --ok: #a3a380;
+    --on-signal: #121212;
 
     --bg: var(--ink-900);
     --bg-raised: var(--ink-800);
@@ -267,15 +271,6 @@ body {
   font-size: var(--fs-mono);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-}
-
-/* Tame Fraunces — moderate optical size, no wonk/soft-axis drama, so the
-   "J" (and every other glyph) reads clean at display sizes. */
-.font-display {
-  font-variation-settings:
-    "opsz" 40,
-    "SOFT" 0,
-    "WONK" 0;
 }
 
 /* Hero rotating-role typewriter caret. */
