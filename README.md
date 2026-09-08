@@ -1,55 +1,30 @@
 # Jayam Patel — Portfolio
 
-**Live:** https://portfolio-website-tawny-sigma-95.vercel.app
+**Live → https://portfolio-website-tawny-sigma-95.vercel.app**
 
-Personal portfolio of Jayam Patel — a software / platform engineer building AI-agent
-infrastructure, LLM observability, and cloud automation. Currently a Software Engineer
-Co-op at Analogic; CS @ UMass Lowell.
+A live, full-stack personal portfolio. I'm a software / platform engineer building
+AI-agent infrastructure, LLM observability, and cloud automation — currently a Software
+Engineer Co-op at Analogic, and a Computer Science student at UMass Lowell (3.98 GPA).
+Designed and built from scratch, not a template.
 
-## Tech
+## What's inside
 
-- **Next.js 15** (App Router) · **TypeScript** · **Tailwind CSS v4**
-- **Framer Motion** — hero reveal, projects coverflow carousel, agent pipeline
-- **Secure contact form** — Cloudflare Turnstile (bot-gate) + server-side validation +
-  [Resend](https://resend.com) email delivery, via a Node route handler
-  (`src/app/api/contact`). No secrets in the client; fails closed if misconfigured.
-- Deployed on **Vercel**
+- **Real experience, up front** — Analogic co-op, Exponentia Strategies, Luxeciaga
+- **Shipped projects** — Smart Degree, luxeciaga.com, PyPhone, and more
+- **A secure, working contact form** — bot-gated, server-validated, and emailed, with no
+  secrets ever exposed in the browser
+- Light / dark theming, an interactive projects carousel, purposeful motion, responsive
+  from phone to 4K, accessible (WCAG 2.1 AA), and SEO-ready
 
-## Features
+## Built with
 
-- Legible-first hero (photo, rotating roles, proof chips), real Experience section,
-  interactive projects carousel, categorized tech stack
-- **Ink / Paper** theme toggle · responsive **360px → 4K** · `prefers-reduced-motion`
-  aware · WCAG 2.1 AA · SEO metadata + JSON-LD
+Next.js · TypeScript · Tailwind CSS · Framer Motion · Cloudflare Turnstile · Resend ·
+deployed on Vercel
 
-## Local development
+---
 
-```bash
-pnpm install
-pnpm dev          # http://localhost:3000
-```
-
-Create `.env.local` with:
-
-```
-NEXT_PUBLIC_TURNSTILE_SITE_KEY=   # Cloudflare Turnstile site key (public)
-TURNSTILE_SECRET_KEY=             # Turnstile secret key (server-only)
-RESEND_API_KEY=                   # Resend API key (server-only)
-CONTACT_TO_EMAIL=                 # inbox that receives contact submissions
-```
-
-Locally the Turnstile keys fall back to Cloudflare's public test keys, so the site runs
-without real credentials (email sending needs a real `RESEND_API_KEY`). In production all
-four are set in Vercel's environment variables.
-
-## Structure
-
-```
-src/app/          routes + layout + /api/contact
-src/components/   hero, experience, projects carousel, tech stack, contact, …
-src/lib/          content data (projects, experience, tech stack, site config)
-public/           images + resume
-docs/             design + build specifications
-```
+**Jayam Patel** — [Portfolio](https://portfolio-website-tawny-sigma-95.vercel.app) ·
+[LinkedIn](https://www.linkedin.com/in/jayam-patel73/) ·
+[GitHub](https://github.com/Jayam743) · jayampatel7473@gmail.com
 
 © 2026 Jayam Patel
